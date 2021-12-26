@@ -69,8 +69,8 @@ module.exports = {
   settings: {
     'import/extensions': ['.ts', '.tsx'],
   },
-  ignorePatterns: ['.next/**/*', '.blitz/**/*', 'scripts/*'],
+  ignorePatterns: ['.next/**/*', '.blitz/**/*', 'scripts/*', '*.config.js'],
   env: {
     jest: true,
-  }
-}
+  },
+};
