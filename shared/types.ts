@@ -1,4 +1,3 @@
-import exp from 'constants';
 import { Argument } from 'classnames';
 import { PropsWithChildren, ReactNode } from 'react';
 
@@ -19,4 +18,12 @@ export interface NotionBlogPostSummary {
   excerpt: string;
   created: string;
   slug: string;
+}
+
+export type TOCType = 'heading_1' | 'heading_2' | 'heading_3';
+
+export interface TableOfContentsEntry {
+  title: string;
+  type: TOCType;
+  indentLevel: number;
 }

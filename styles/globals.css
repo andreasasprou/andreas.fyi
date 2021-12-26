@@ -5,10 +5,8 @@
 html,
 body,
 #__next {
-  height: 100%;
-  width: 100%;
-  background: #000000;
-  color: rgba(255, 255, 255, 0.92);
+  @apply bg-black;
+  @apply text-white/70;
 }
 
 html {
@@ -22,4 +20,67 @@ html {
 #nprogress .spinner-icon {
   @apply border-t-brand-500;
   @apply border-l-brand-500;
+}
+
+.notion-quote:before {
+  position: absolute;
+  font-family: emoji;
+  font-size: 4em;
+  line-height: 1;
+  content: "“";
+  left: -56px;
+  top: 0;
+}
+
+.notion-aside-table-of-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notion-aside-table-of-contents .notion-table-of-contents {
+  display: block;
+}
+
+.notion-aside-table-of-contents-header {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1.1em;
+  word-break: break-word;
+}
+
+.notion-aside-table-of-contents .notion-table-of-contents-item {
+  line-height: 1;
+}
+
+.notion-aside-table-of-contents
+.notion-table-of-contents-item-indent-level-0:first-of-type {
+  margin-top: 0;
+}
+
+.notion-aside-table-of-contents
+.notion-table-of-contents-item-indent-level-0 {
+  margin-top: 0.25em;
+}
+
+.notion-aside-table-of-contents
+.notion-table-of-contents-item-indent-level-1 {
+  font-size: 13px;
+}
+
+.notion-aside-table-of-contents
+.notion-table-of-contents-item-indent-level-2 {
+  font-size: 12px;
+}
+
+.notion-aside-table-of-contents .notion-table-of-contents-item-body {
+  border: 0 none;
+  font-size: 1rem;
+}
+
+.notion-h[data-active="true"] {
+  position: sticky;
+  top: -1px;
+  background: black;
+  z-index: 10;
 }

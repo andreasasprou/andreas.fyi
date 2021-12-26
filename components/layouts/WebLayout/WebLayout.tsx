@@ -2,9 +2,11 @@ import React, { ReactNode } from 'react';
 import { NextSeo } from 'next-seo';
 import { LargeText, PageText } from 'components/PageText';
 import { PageLink } from 'components/PageLink';
+import { StyleProps } from 'shared/types';
+import classNames from 'classnames';
 import { WebHeader } from './WebHeader';
 
-interface WebLayoutProps {
+interface WebLayoutProps extends StyleProps {
   children: ReactNode;
   title: string | string[];
   ogImage?: string;
@@ -18,9 +20,15 @@ export function WebLayout({
   children,
   url,
   ogImage,
+  className,
 }: WebLayoutProps) {
   return (
-    <div className="w-full h-full max-w-screen-lg mx-auto px-4 py-4 md:p-8">
+    <div
+      className={classNames(
+        'flex flex-col max-w-screen-xl mx-auto px-4 py-4 md:p-8 min-h-[100vh]',
+        className,
+      )}
+    >
       <NextSeo
         title={`${title} - Andreas Asprou`}
         description="Andreas Asprou."
@@ -54,10 +62,10 @@ export function WebLayout({
           : {})}
       />
       <WebHeader />
-      <div className="py-5 md:py-12">{children}</div>
+      <div className="py-8 md:py-16">{children}</div>
       {/*<SubscribeCard mt={4} />*/}
       <div className="mt-auto">
-        <PageText>
+        <p className="leading-8">
           If you'd like to get in touch, consider{' '}
           <PageLink href="mailto:andyasprou@gmail.com?subject=Hello">
             writing an email
@@ -67,7 +75,7 @@ export function WebLayout({
             Tweet
           </PageLink>
           .
-        </PageText>
+        </p>
       </div>
     </div>
   );

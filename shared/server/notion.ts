@@ -1,6 +1,7 @@
 import { Client } from '@notionhq/client';
 import { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints';
 import { NotionBlogPostSummary } from 'shared/types';
+import { generateToc } from './generate-toc';
 
 const notion = new Client({
   auth: process.env.NOTION_SECRET,
@@ -76,6 +77,25 @@ export const getPosts = async (cursor?: string | undefined) => {
   };
 };
 
+async function fetchAllChildrenBlocks(blockId: string) {
+  const blocks = [];
+  let cursor = undefined;
+
+  do {
+    const response = await notion.blocks.children.list({
+      block_id: blockId,
+      start_cursor: cursor,
+      page_size: 50,
+    });
+
+    blocks.push(...response.results);
+
+    cursor = response.next_cursor as string;
+  } while (cursor);
+
+  return blocks;
+}
+
 export const getPostBySlug = async (slug: string) => {
   const post = await notion.databases.query({
     database_id: databaseId,
@@ -94,14 +114,15 @@ export const getPostBySlug = async (slug: string) => {
   const pageId = post.results[0]!.id;
 
   const pagePromise = notion.pages.retrieve({ page_id: pageId });
-  const blocksPromise = notion.blocks.children.list({ block_id: pageId });
+  const blocksPromise = fetchAllChildrenBlocks(pageId);
 
   const page = await pagePromise;
   const blocks = await blocksPromise;
 
   return {
     pageInfo: formatPostProperties((page as any).properties),
-    blocks: blocks.results,
+    blocks,
+    toc: await generateToc(blocks),
   };
 };
 

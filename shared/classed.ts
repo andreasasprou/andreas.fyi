@@ -3,6 +3,7 @@ import {
   ClassAttributes,
   createElement,
   ElementType,
+  forwardRef,
   FunctionComponentElement,
   ReactElement,
 } from 'react';
@@ -24,13 +25,12 @@ export function classed<
 export function classed<P extends Record<string, unknown>>(
   type: ElementType | keyof JSX.IntrinsicElements,
   ...className: Argument[]
-): (
-  props?: (Attributes & P & { className?: string }) | null,
-) => ReactElement<P> {
-  return function Classed(props) {
+) {
+  return forwardRef((props: Attributes & P & { className?: string }, ref) => {
     return createElement(type, {
       ...props,
       className: classNames(props?.className, ...className),
+      ref,
     });
-  };
+  });
 }

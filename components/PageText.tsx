@@ -31,7 +31,7 @@ export const LargeText = forwardRef(
       <p
         ref={ref}
         className={classNames(
-          'text-3xl md:text-4xl md:leading-normal leading-normal',
+          'text-2xl md:text-3xl md:leading-normal leading-normal text-white/90',
           className,
         )}
         {...rest}
