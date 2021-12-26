@@ -13,3 +13,10 @@ export type CustomPage = {
 export type JSXElementType = keyof JSX.IntrinsicElements;
 
 export type PropsOf<T extends JSXElementType> = JSX.IntrinsicElements[T];
+
+export interface NotionBlogPostSummary {
+  name: string;
+  excerpt: string;
+  created: string;
+  slug: string;
+}

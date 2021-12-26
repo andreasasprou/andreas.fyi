@@ -1,4 +1,4 @@
-import { forwardRef, Ref } from 'react';
+import React, { forwardRef, Ref } from 'react';
 import classNames from 'classnames';
 import { PropsOf } from 'shared/types';
 
@@ -24,3 +24,18 @@ export function PageTextHighlight({ className, ...rest }: PropsOf<'span'>) {
     />
   );
 }
+
+export const LargeText = forwardRef(
+  ({ className, ...rest }: PropsOf<'p'>, ref: Ref<HTMLParagraphElement>) => {
+    return (
+      <p
+        ref={ref}
+        className={classNames(
+          'text-3xl md:text-4xl md:leading-normal leading-normal',
+          className,
+        )}
+        {...rest}
+      />
+    );
+  },
+);

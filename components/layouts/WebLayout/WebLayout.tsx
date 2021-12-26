@@ -1,5 +1,7 @@
 import React, { ReactNode } from 'react';
 import { NextSeo } from 'next-seo';
+import { LargeText, PageText } from 'components/PageText';
+import { PageLink } from 'components/PageLink';
 import { WebHeader } from './WebHeader';
 
 interface WebLayoutProps {
@@ -18,7 +20,7 @@ export function WebLayout({
   ogImage,
 }: WebLayoutProps) {
   return (
-    <div className="w-full h-full space-x-4">
+    <div className="w-full h-full max-w-screen-lg mx-auto px-4 py-4 md:p-8">
       <NextSeo
         title={`${title} - Andreas Asprou`}
         description="Andreas Asprou."
@@ -51,10 +53,21 @@ export function WebLayout({
             }
           : {})}
       />
-      <div className="max-w-screen-lg mx-auto px-4 py-10">
-        <WebHeader />
-        <div className="pt-8">{children}</div>
-        {/*<SubscribeCard mt={4} />*/}
+      <WebHeader />
+      <div className="py-5 md:py-12">{children}</div>
+      {/*<SubscribeCard mt={4} />*/}
+      <div className="mt-auto">
+        <PageText>
+          If you'd like to get in touch, consider{' '}
+          <PageLink href="mailto:andyasprou@gmail.com?subject=Hello">
+            writing an email
+          </PageLink>{' '}
+          or sending a{' '}
+          <PageLink href="https://twitter.com/andyasprou/" target="_blank">
+            Tweet
+          </PageLink>
+          .
+        </PageText>
       </div>
     </div>
   );
