@@ -19,7 +19,7 @@ interface PostLinkProps {
 function PostLink({ href, title, excerpt, date }: PostLinkProps) {
   return (
     <Link href={href} passHref>
-      <div className="flex justify-between items-center maxW-[700] bg-gray-900 rounded-md p-4 md:p-8 hover:cursor-pointer hover:bg-gray-800 transition-all">
+      <div className="max-w-article flex justify-between items-center maxW-[700] bg-gray-900 rounded-md p-4 hover:cursor-pointer hover:bg-gray-800 transition-all">
         <div>
           <p className="text-brand-500 text-lg font-medium mb-2">{title}</p>
           <p className="text-lg">{excerpt}</p>
@@ -36,7 +36,7 @@ const Blog: CustomPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <VStack>
+      <div className="space-y-4">
         {posts.data.map((post) => (
           <PostLink
             title={post.name}
@@ -46,7 +46,7 @@ const Blog: CustomPage = ({
             key={post.slug}
           />
         ))}
-      </VStack>
+      </div>
     </>
   );
 };

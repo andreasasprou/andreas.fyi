@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        article: '800px'
+      },
       colors: {
         brand: {
           500: '#f2aa4cff',

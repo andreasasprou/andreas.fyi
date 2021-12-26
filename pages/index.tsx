@@ -7,7 +7,7 @@ import { LargeText } from 'components/PageText';
 
 const Home: CustomPage = () => {
   return (
-    <VStack>
+    <VStack className="max-w-article">
       <VStack>
         <LargeText>
           Hey, I'm Andreas. A deliberate, unconventional and obsessive

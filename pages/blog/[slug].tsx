@@ -29,7 +29,7 @@ function SlugPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
         </p>
       </div>
       <div className="flex w-full leading-8 text-lg mx-auto">
-        <div className="w-full lg:max-w-[800px]">
+        <div className="w-full lg:max-w-article">
           {post.blocks.map((block) => (
             <RenderBlock key={block.id} block={block} />
           ))}

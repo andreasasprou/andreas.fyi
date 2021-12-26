@@ -10,5 +10,5 @@ export const PageLink = ({
   ...props
 }: StyleProps & PropsOf<'a'>) => (
   // eslint-disable-next-line jsx-a11y/anchor-has-content
-  <a className={classNames('pageLinkClasses', className)} {...props} />
+  <a className={classNames(pageLinkClasses, className)} {...props} />
 );
