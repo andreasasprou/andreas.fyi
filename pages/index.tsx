@@ -17,9 +17,9 @@ const Home: CustomPage = () => {
       </VStack>
       <VStack>
         <LargeText>
-          I live to create ("workaholic"): attempting to optimize my life around
-          being able to create exceptional products that feel like magic to use
-          and learn as much as possible.
+          I live to create, sometimes called "workaholic": attempting to
+          optimize my life around being able to create exceptional products that
+          feel like magic to use and learn as much as possible.
         </LargeText>
         <LargeText>
           I spend most of my time writing code and designing systems to
