@@ -5,12 +5,9 @@ import {
   PropertyValueTitle,
   PropertyValue,
 } from '@notion-stuff/v4-types';
-import {
-  PropertyValueEditedTime,
-  PropertyValueType,
-} from '@notion-stuff/v4-types/src/lib/types';
+import { PropertyValueEditedTime } from '@notion-stuff/v4-types/src/lib/types';
 import dayjs from 'dayjs';
-import { NotionBlock, NotionBlogPostSummary } from '../../types';
+import { NotionBlogPostSummary } from '../../types';
 
 interface PostProperties {
   name: PropertyValueTitle;

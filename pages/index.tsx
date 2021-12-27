@@ -4,6 +4,7 @@ import { CustomPage } from 'shared/types';
 import { VStack } from 'components/VStack';
 import { PageLink } from 'components/PageLink';
 import { LargeText } from 'components/PageText';
+import { APIRoutes, ROUTES } from '../shared/constants/client';
 
 const Home: CustomPage = () => {
   return (
@@ -77,6 +78,14 @@ const Home: CustomPage = () => {
   );
 };
 
-Home.getLayout = (page) => <WebLayout title="Me">{page}</WebLayout>;
+Home.getLayout = (page) => (
+  <WebLayout
+    title="Me"
+    ogImage={`${APIRoutes.OG_IMAGE}/${encodeURIComponent('Home')}`}
+    url={`https://andreas.fyi${ROUTES.Home}`}
+  >
+    {page}
+  </WebLayout>
+);
 
 export default Home;
