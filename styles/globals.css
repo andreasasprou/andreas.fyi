@@ -97,4 +97,6 @@ html {
   top: -1px;
   background: black;
   z-index: 10;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
