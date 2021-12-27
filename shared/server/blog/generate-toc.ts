@@ -1,20 +1,23 @@
 import { Block } from '@notion-stuff/v4-types';
 import { HeadingBlock } from '@notion-stuff/v4-types/src/lib/types';
+import { TableOfContentsEntry } from '../../types';
 
-const getIndentLevel = (tag: HeadingBlock['type']) => {
+const getIndentLevel = (
+  tag: HeadingBlock['type'],
+): TableOfContentsEntry['indentLevel'] => {
   switch (tag) {
     case 'heading_1':
-      return 1;
+      return 0;
     case 'heading_2':
-      return 2;
+      return 1;
     case 'heading_3':
-      return 3;
+      return 2;
   }
 
-  return 1;
+  return 0;
 };
 
-export const generateToc = async (blocks: Block[]) =>
+export const generateToc = (blocks: Block[]): TableOfContentsEntry[] =>
   blocks
     .filter((block: Block) =>
       ['heading_1', 'heading_2', 'heading_3'].includes(block.type),

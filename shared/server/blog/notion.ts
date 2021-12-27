@@ -108,7 +108,7 @@ export const getPostBySlug = async (slug: string) => {
   return {
     pageInfo: formatPostProperties((page as any).properties),
     blocks: appendListBlocks(blocks),
-    toc: await generateToc(blocks),
+    toc: generateToc(blocks),
   };
 };
 

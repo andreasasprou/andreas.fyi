@@ -44,7 +44,7 @@ export interface NotionStuffItem {
 export interface TableOfContentsEntry {
   title: string;
   type: HeadingBlock['type'];
-  indentLevel: number;
+  indentLevel: 0 | 1 | 2;
 }
 
 export interface NotionNumberedListBlock {

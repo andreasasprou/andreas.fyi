@@ -46,52 +46,6 @@ html {
   top: 0;
 }
 
-.notion-aside-table-of-contents {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.notion-aside-table-of-contents .notion-table-of-contents {
-  display: block;
-}
-
-.notion-aside-table-of-contents-header {
-  text-transform: uppercase;
-  font-weight: 400;
-  font-size: 1.1em;
-  word-break: break-word;
-}
-
-.notion-aside-table-of-contents .notion-table-of-contents-item {
-  line-height: 1;
-}
-
-.notion-aside-table-of-contents
-.notion-table-of-contents-item-indent-level-0:first-of-type {
-  margin-top: 0;
-}
-
-.notion-aside-table-of-contents
-.notion-table-of-contents-item-indent-level-0 {
-  margin-top: 0.25em;
-}
-
-.notion-aside-table-of-contents
-.notion-table-of-contents-item-indent-level-1 {
-  font-size: 13px;
-}
-
-.notion-aside-table-of-contents
-.notion-table-of-contents-item-indent-level-2 {
-  font-size: 12px;
-}
-
-.notion-aside-table-of-contents .notion-table-of-contents-item-body {
-  border: 0 none;
-  font-size: 1rem;
-}
-
 .notion-h[data-active="true"] {
   position: sticky;
   top: -1px;

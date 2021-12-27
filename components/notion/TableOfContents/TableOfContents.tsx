@@ -78,8 +78,8 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
     <div
       className={`overflow-y-auto max-h-[100vh] sticky top-0 py-8 max-w-[380px] hidden lg:flex w-full pl-4 text-white self-start`}
     >
-      <div className="notion-aside-table-of-contents">
-        <nav className="notion-table-of-contents notion-gray">
+      <div className="flex flex-col items-center">
+        <nav className="block">
           {toc.map((tocItem) => {
             const id = convertHeadingToId(tocItem.title);
 
@@ -87,20 +87,20 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
               <Link href={`#${id}`} passHref key={id}>
                 <a
                   className={classNames(
-                    'notion-table-of-contents-item',
-                    `notion-table-of-contents-item-indent-level-${tocItem.indentLevel}`,
-                    activeSection === id && 'text-brand-500',
+                    `leading-normal hover:bg-brand-500 hover:text-black px-1 text-base`,
+                    {
+                      'text-brand-500': activeSection === id,
+                      'text-white/80': activeSection !== id,
+                      'mt-[2px]': tocItem.indentLevel === 0,
+                      'first-of-type:mt-0': tocItem.indentLevel === 0,
+                    },
                   )}
+                  style={{
+                    display: 'inline-block',
+                    marginLeft: tocItem.indentLevel * 16,
+                  }}
                 >
-                  <span
-                    className="notion-table-of-contents-item-body leading-normal  hover:bg-brand-500 hover:text-white px-1"
-                    style={{
-                      display: 'inline-block',
-                      marginLeft: tocItem.indentLevel * 16,
-                    }}
-                  >
-                    {tocItem.title}
-                  </span>
+                  {tocItem.title}
                 </a>
               </Link>
             );
