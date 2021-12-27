@@ -1,7 +1,7 @@
 import { Client } from '@notionhq/client';
 import { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints';
 import { Block } from '@notion-stuff/v4-types';
-import { NotionBlogPostSummary } from '../types';
+import { NotionBlogPostSummary } from '../../types';
 import { generateToc } from './generate-toc';
 import { formatPostProperties } from './format-post-properties';
 import { appendListBlocks } from './format-list-blocks';
@@ -10,7 +10,7 @@ const notion = new Client({
   auth: process.env.NOTION_SECRET,
 });
 
-const databaseId = 'ca29d63f09454ecfa75f1a864345dd6b';
+const databaseId = String(process.env.NOTION_DATABASE_ID);
 
 export const getPosts = async (cursor?: string | undefined) => {
   const response: QueryDatabaseResponse = await notion.databases.query({

@@ -4,7 +4,7 @@ import {
   NotionBulletedListBlock,
   NotionListBlock,
   NotionNumberedListBlock,
-} from '../../types';
+} from '../../../types';
 
 const isListItem = (type: NotionBlock['type']) =>
   ['bulleted_list_item', 'numbered_list_item'].includes(type);

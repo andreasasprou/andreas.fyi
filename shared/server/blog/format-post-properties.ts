@@ -5,7 +5,7 @@ import {
   PropertyValueTitle,
 } from '@notion-stuff/v4-types';
 import { PropertyValueEditedTime } from '@notion-stuff/v4-types/src/lib/types';
-import { NotionBlogPostSummary } from '../types';
+import { NotionBlogPostSummary } from '../../types';
 
 interface PostProperties {
   name: PropertyValueTitle;
