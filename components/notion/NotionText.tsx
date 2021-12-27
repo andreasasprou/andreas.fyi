@@ -12,7 +12,7 @@ interface NotionTextProps {
 
 export function NotionText({ block }: NotionTextProps) {
   if (block == null) {
-    return null;
+    return <></>;
   }
 
   return (

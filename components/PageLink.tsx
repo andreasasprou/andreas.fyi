@@ -2,7 +2,8 @@ import classNames from 'classnames';
 import React from 'react';
 import { PropsOf, StyleProps } from '../shared/types';
 
-export const pageLinkClasses = 'px-1 text-black bg-brand-500 hover:opacity-80';
+export const pageLinkClasses =
+  'px-1 text-black bg-brand-500 hover:opacity-80 dont-break-out';
 
 export const PageLink = ({
   className,
