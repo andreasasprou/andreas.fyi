@@ -9,7 +9,7 @@ import { WebLayout } from 'components/layouts/WebLayout';
 import { APIRoutes, ROUTES } from 'shared/constants/client';
 import { BlockRenderer } from 'components/notion/BlockRenderer';
 import { TableOfContents } from 'components/notion/TableOfContents';
-import { getPostBySlug } from 'shared/server/blog/notion';
+import { getAllPosts, getPostBySlug } from 'shared/server/blog/notion';
 
 function SlugPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
@@ -43,8 +43,14 @@ function SlugPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const allPosts = await getAllPosts();
+
   return {
-    paths: [],
+    paths: allPosts.map((post) => ({
+      params: {
+        slug: post.slug,
+      },
+    })),
     fallback: 'blocking',
   };
 };
