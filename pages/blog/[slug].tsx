@@ -8,7 +8,7 @@ import dayjs from 'dayjs';
 import { WebLayout } from 'components/layouts/WebLayout';
 import { ROUTES } from 'shared/constants/client';
 import { getPostBySlug } from 'shared/server/notion';
-import { RenderBlock } from 'components/notion/RenderBlock';
+import { BlockRenderer } from 'components/notion/BlockRenderer';
 import { TableOfContents } from 'components/notion/TableOfContents';
 
 function SlugPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -31,7 +31,7 @@ function SlugPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
       <div className="flex w-full leading-8 text-lg mx-auto">
         <div className="w-full lg:max-w-article">
           {post.blocks.map((block) => (
-            <RenderBlock key={block.id} block={block} />
+            <BlockRenderer key={block.id} block={block} />
           ))}
         </div>
         <TableOfContents toc={post.toc} />

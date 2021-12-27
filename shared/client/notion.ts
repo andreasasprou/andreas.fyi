@@ -1,7 +1,7 @@
 import {
   FileWithCaption,
   ExternalFileWithCaption,
-} from '@notionhq/client/build/src/api-types';
+} from '@notion-stuff/v4-types';
 
 export const getMediaProperties = (
   value: FileWithCaption | ExternalFileWithCaption,

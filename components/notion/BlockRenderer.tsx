@@ -1,7 +1,6 @@
-import { Block } from '@notionhq/client/build/src/api-types';
-
 import { getMediaProperties } from 'shared/client/notion';
-import { ClientConstants } from '../../shared/constants/client';
+import { Block } from '@notion-stuff/v4-types';
+import { ClientConstants } from 'shared/constants/client';
 import { NotionText } from './NotionText';
 import { NotionImage } from './NotionImage';
 import { NotionHeading } from './NotionHeading';
@@ -13,9 +12,9 @@ interface Props {
   block: Block;
 }
 
-export function RenderBlock({ block }: Props) {
+export function BlockRenderer({ block }: Props) {
   const { type } = block;
-  const value = block[type];
+  const value = (block as any)[type];
 
   if (value.text != null && value.text.length === 0) {
     return <div className="h-[30px]" />;
@@ -25,7 +24,7 @@ export function RenderBlock({ block }: Props) {
     case 'paragraph': {
       return (
         <p className="leading-extra-relaxed mb-4 md:mb-8">
-          <NotionText text={value.text} />
+          <NotionText block={value.text} />
         </p>
       );
     }
@@ -38,7 +37,7 @@ export function RenderBlock({ block }: Props) {
     case 'quote': {
       return (
         <Quote>
-          <NotionText text={value.text} />
+          <NotionText block={value.text} />
         </Quote>
       );
     }
@@ -50,7 +49,7 @@ export function RenderBlock({ block }: Props) {
             <div className="text-yellow-500">{value.icon.emoji}</div>
           )}
           <div className="ml-4 text-white/90">
-            <NotionText text={value.text} />
+            <NotionText block={value.text} />
           </div>
         </div>
       );
@@ -60,7 +59,7 @@ export function RenderBlock({ block }: Props) {
     case 'numbered_list_item': {
       return (
         <li className="notion-list-item list-disc">
-          <NotionText text={value.text} />
+          <NotionText block={value.text} />
         </li>
       );
     }

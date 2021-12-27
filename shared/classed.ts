@@ -1,36 +1,18 @@
-import {
-  Attributes,
-  ClassAttributes,
-  createElement,
-  ElementType,
-  forwardRef,
-  FunctionComponentElement,
-  ReactElement,
-} from 'react';
+import { Attributes, createElement, forwardRef } from 'react';
 import classNames, { Argument } from 'classnames';
-
-export function classed<P extends Record<string, unknown>>(
-  type: ElementType,
-  ...className: Argument[]
-): (props?: (Attributes & P) | null) => FunctionComponentElement<P>;
+import { PropsOf } from './types';
 
 export function classed<
   T extends keyof JSX.IntrinsicElements,
-  P extends JSX.IntrinsicElements[T],
->(
-  type: keyof JSX.IntrinsicElements,
-  ...className: Argument[]
-): (props?: (ClassAttributes<T> & P) | null) => ReactElement<P, T>;
-
-export function classed<P extends Record<string, unknown>>(
-  type: ElementType | keyof JSX.IntrinsicElements,
-  ...className: Argument[]
-) {
-  return forwardRef((props: Attributes & P & { className?: string }, ref) => {
-    return createElement(type, {
-      ...props,
-      className: classNames(props?.className, ...className),
-      ref,
-    });
-  });
+  P extends Record<string, unknown>,
+>(type: T, ...className: Argument[]) {
+  return forwardRef(
+    (props: Attributes & PropsOf<T> & P & { className?: string }, ref) => {
+      return createElement(type, {
+        ...props,
+        className: classNames(props?.className, ...className),
+        ref,
+      });
+    },
+  );
 }

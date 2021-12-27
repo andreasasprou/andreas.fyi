@@ -1,6 +1,7 @@
 import { Client } from '@notionhq/client';
 import { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints';
 import { NotionBlogPostSummary } from 'shared/types';
+import { Block } from '@notion-stuff/v4-types';
 import { generateToc } from './generate-toc';
 
 const notion = new Client({
@@ -78,7 +79,7 @@ export const getPosts = async (cursor?: string | undefined) => {
 };
 
 async function fetchAllChildrenBlocks(blockId: string) {
-  const blocks = [];
+  const blocks: Block[] = [];
   let cursor = undefined;
 
   do {
@@ -88,7 +89,7 @@ async function fetchAllChildrenBlocks(blockId: string) {
       page_size: 50,
     });
 
-    blocks.push(...response.results);
+    blocks.push(...(response.results as Block[]));
 
     cursor = response.next_cursor as string;
   } while (cursor);

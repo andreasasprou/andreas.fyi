@@ -1,48 +1,30 @@
 import { Fragment } from 'react';
+import { RichText } from '@notion-stuff/v4-types/src/lib/types';
 import { Link } from './Link';
-
-/**
- * This type is harcoded here as I couldn't really find anything
- * in the Notion API that corresponds to the actual data
- */
-interface TextProps {
-  annotations: {
-    bold: boolean;
-    italic: boolean;
-    strikethrough: boolean;
-    underline: boolean;
-    code: boolean;
-    color: string;
-  };
-  href?: string;
-  plain_text: string;
-  text?: {
-    content: string;
-    link?: {
-      url: string;
-    };
-  };
-  type: string;
-}
 
 const renderContent = (code: boolean, content: string) => {
   return <>{code ? <code>{content}</code> : <>{content}</>}</>;
 };
 
-export const NotionText: React.FC<{ text: TextProps[] | null }> = ({
-  text,
-}) => {
-  if (text == null) {
+interface NotionTextProps {
+  block: RichText[];
+}
+
+export function NotionText({ block }: NotionTextProps) {
+  if (block == null) {
     return null;
   }
 
   return (
     <>
-      {text.map((value, idx) => {
+      {block.map((value, idx) => {
         const {
           annotations: { bold, code, italic, strikethrough, underline },
-          text,
         } = value;
+
+        // TODO: Wrangle Notions' types
+        const text: any = (value as any).text;
+
         if (text == null) {
           return null;
         }
@@ -71,4 +53,4 @@ export const NotionText: React.FC<{ text: TextProps[] | null }> = ({
       })}
     </>
   );
-};
+}

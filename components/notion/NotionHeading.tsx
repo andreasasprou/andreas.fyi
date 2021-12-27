@@ -1,17 +1,16 @@
-import { RichText } from '@notionhq/client/build/src/api-types';
 import Link from 'next/link';
-import { classed } from '../../shared/classed';
-import { JSXElementType } from '../../shared/types';
-import { convertHeadingToId } from '../../shared/client/notion';
+import { classed } from 'shared/classed';
+import { JSXElementType } from 'shared/types';
+import { convertHeadingToId } from 'shared/client/notion';
+import { HeadingBlock, RichText } from '@notion-stuff/v4-types/src/lib/types';
 import { NotionText } from './NotionText';
 
-type HeadingTypes = 'heading_1' | 'heading_2' | 'heading_3';
 interface HeadingConfig {
   classes: string;
   as: JSXElementType;
 }
 
-const headingConfig: Record<HeadingTypes, HeadingConfig> = {
+const headingConfig: Record<HeadingBlock['type'], HeadingConfig> = {
   heading_1: {
     classes: 'text-4xl font-bold leading-snug mt-16 mb-4 text-white/90',
     as: 'h1',
@@ -31,7 +30,7 @@ const commonClasses = [
 ];
 
 interface Props {
-  type: HeadingTypes;
+  type: HeadingBlock['type'];
   text: RichText[];
 }
 export function NotionHeading({ type, text }: Props) {
@@ -47,7 +46,7 @@ export function NotionHeading({ type, text }: Props) {
   return (
     <Link href={`#${id}`} passHref>
       <Component data-id={id} id={id}>
-        <NotionText text={text} />
+        <NotionText block={text} />
       </Component>
     </Link>
   );
