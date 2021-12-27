@@ -54,3 +54,10 @@ html {
   padding-top: 6px;
   padding-bottom: 6px;
 }
+
+@media (min-width: 768px) {
+  .notion-h[data-active="true"] {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
