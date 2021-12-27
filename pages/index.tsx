@@ -40,7 +40,7 @@ const Home: CustomPage = () => {
           packed early 20s. Before the age of 24, my timeline includes:
           <ul className="list-disc pl-6 py-6">
             <li>
-              Bootstrapping my first business{' '}
+              Bootstrapped my first business{' '}
               <PageLink href="https://www.flick.tech" target="_blank">
                 Flick.tech
               </PageLink>{' '}
@@ -50,7 +50,7 @@ const Home: CustomPage = () => {
               London in the top 3 of my cohort.
             </li>
             <li>
-              Co-founding my second business{' '}
+              Co-founded my second business{' '}
               <PageLink href="https://www.dweet.com" target="_blank">
                 Dweet.com
               </PageLink>
