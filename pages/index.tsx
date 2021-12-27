@@ -31,7 +31,7 @@ const Home: CustomPage = () => {
           lifestyle design.
         </LargeText>
       </VStack>
-      <VStack>
+      <div className="space-y-4 md:space-y-8">
         <LargeText>
           Through my journey, I've been exposed to a huge number of interesting
           problems.
@@ -73,7 +73,7 @@ const Home: CustomPage = () => {
             </li>
           </ul>
         </LargeText>
-      </VStack>
+      </div>
     </VStack>
   );
 };
