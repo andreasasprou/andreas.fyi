@@ -90,7 +90,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
                     `block leading-normal hover:bg-brand-500 hover:text-black px-1 text-base`,
                     {
                       'text-brand-500': activeSection === id,
-                      'text-white/80': activeSection !== id,
+                      'text-white/60': activeSection !== id,
                       'mt-[2px]': tocItem.indentLevel === 0,
                       'first-of-type:mt-0': tocItem.indentLevel === 0,
                     },
