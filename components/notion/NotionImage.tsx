@@ -1,20 +1,16 @@
-import NextImage from 'next/image';
+interface NotionImageProps {
+  src: string;
+  alt: string;
+}
 
-export const NotionImage: React.FC<{ src: string; alt: string }> = ({
-  src,
-  alt,
-}) => {
+export function NotionImage({ src, alt }: NotionImageProps) {
   return (
-    <div className="imageContainer">
-      <NextImage
+    <div className="relative overflow-hidden pb-[66.666667%] mb-8">
+      <img
         src={src}
         alt={alt}
-        layout="fill"
-        objectFit="cover"
-        objectPosition="center"
-        className="nextImage mb-8 p-0"
-        unoptimized={process.env.NODE_ENV !== 'production'}
+        className="absolute h-full w-full object-cover"
       />
     </div>
   );
-};
+}
