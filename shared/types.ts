@@ -24,8 +24,21 @@ export interface NotionBlogPostSummary {
   name: string;
   excerpt: string;
   created: string;
+  publishedDate: string;
   slug: string;
   lastModified: string;
+}
+
+export interface NotionStuffItem {
+  id: string;
+  name: string;
+  notes?: string;
+  url: string;
+  tags: {
+    id: string;
+    name: string;
+    color: string;
+  }[];
 }
 
 export interface TableOfContentsEntry {

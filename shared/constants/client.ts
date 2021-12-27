@@ -8,9 +8,12 @@ export const ClientConstants = {
 
 export const ROUTES = {
   Home: '/',
-  Blog: {
-    Home: '/blog',
-    post: (name: string) => `/blog/${name}`,
+  Writing: {
+    Home: '/writing',
+    post: (name: string) => `/writing/${name}`,
+  },
+  Stuff: {
+    Home: '/stuff',
   },
 };
 

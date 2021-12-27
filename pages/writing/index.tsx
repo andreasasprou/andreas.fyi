@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import { getPosts } from 'shared/server/blog/notion';
 import { APIRoutes, ROUTES } from 'shared/constants/client';
 import { ArrowRightIcon } from '@heroicons/react/solid';
+import { PageHeader } from '../../components/PageHeader';
 
 interface PostLinkProps {
   href: string;
@@ -35,12 +36,13 @@ const Blog: CustomPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
+      <PageHeader title="Writing" />
       <div className="space-y-4">
         {posts.data.map((post) => (
           <PostLink
             title={post.name}
             excerpt={post.excerpt}
-            href={ROUTES.Blog.post(post.slug)}
+            href={ROUTES.Writing.post(post.slug)}
             date={dayjs(new Date(post.created)).format('DD/MM/YYYY')}
             key={post.slug}
           />
@@ -54,7 +56,7 @@ Blog.getLayout = (page) => (
   <WebLayout
     title="Blog"
     ogImage={`${APIRoutes.OG_IMAGE}/${encodeURIComponent('Blog')}`}
-    url={`https://andreas.fyi${ROUTES.Blog.Home}`}
+    url={`https://andreas.fyi${ROUTES.Writing.Home}`}
   >
     {page}
   </WebLayout>

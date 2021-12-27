@@ -14,13 +14,13 @@ const items = [
     route: ROUTES.Home,
   },
   {
-    title: 'Blog',
-    route: ROUTES.Blog.Home,
+    title: 'Writing',
+    route: ROUTES.Writing.Home,
   },
-  // {
-  //   title: 'Stuff',
-  //   route: ROUTES.Stuff.Home,
-  // }
+  {
+    title: 'Stuff',
+    route: ROUTES.Stuff.Home,
+  },
 ];
 
 const HeaderLink = ({

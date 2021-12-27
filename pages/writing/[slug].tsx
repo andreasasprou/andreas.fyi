@@ -10,6 +10,7 @@ import { APIRoutes, ROUTES } from 'shared/constants/client';
 import { BlockRenderer } from 'components/notion/BlockRenderer';
 import { TableOfContents } from 'components/notion/TableOfContents';
 import { getAllPosts, getPostBySlug } from 'shared/server/blog/notion';
+import { PageHeader } from '../../components/PageHeader';
 
 function SlugPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
@@ -19,17 +20,13 @@ function SlugPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
       ogImage={`${APIRoutes.OG_IMAGE}/${encodeURIComponent(
         post.pageInfo.name,
       )}.jpeg`}
-      url={`https://andreas.fyi${ROUTES.Blog.post(post.pageInfo.slug)}`}
+      url={`https://andreas.fyi${ROUTES.Writing.post(post.pageInfo.slug)}`}
     >
-      <div className="border-b  border-b-white/20 pb-4 mb-4 md:pb-8 md:mb-8">
-        <h1 className="mb-6 md:text-6xl text-4xl font-bold text-white/90 leading-normal">
-          {post.pageInfo.name}
-        </h1>
-        <p className="mb-4 text-xl text-white/80">{post.pageInfo.excerpt}</p>
-        <p className="text-white/70">
-          {dayjs(new Date(post.pageInfo.created)).format('MMM D, YYYY')}
-        </p>
-      </div>
+      <PageHeader
+        title={post.pageInfo.name}
+        subTitle={post.pageInfo.excerpt}
+        createdAt={new Date(post.pageInfo.created)}
+      />
       <div className="flex w-full leading-8 text-lg mx-auto">
         <div className="w-full lg:max-w-article">
           {post.blocks.map((block) => (

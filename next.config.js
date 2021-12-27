@@ -15,12 +15,12 @@ module.exports = {
     return [
       {
         source: '/engineering/nextjs-auth-skeleton-loaders',
-        destination: '/blog/nextjs-auth-skeleton-loaders',
+        destination: '/writing/nextjs-auth-skeleton-loaders',
         permanent: true,
       },
       {
         source: '/thinking/early-stage-founder-character',
-        destination: '/blog/early-stage-founder-character',
+        destination: '/writing/early-stage-founder-character',
         permanent: true,
       },
     ];

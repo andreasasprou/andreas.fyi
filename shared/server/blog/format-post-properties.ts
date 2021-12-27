@@ -12,22 +12,32 @@ interface PostProperties {
   slug: PropertyValueRichText;
   created: PropertyValueCreatedTime;
   lastModified: PropertyValueEditedTime;
-  publishedDate?: PropertyValueDate;
+  publishedDate: PropertyValueDate;
 }
 
 export function formatPostProperties(
   properties: PostProperties,
 ): NotionBlogPostSummary {
-  return Object.entries(properties).reduce((acc, [prop, value]) => {
-    const baseValue = value?.[value?.type];
+  const formattedProperties = Object.entries(properties).reduce(
+    (acc, [prop, value]) => {
+      const baseValue = value?.[value?.type];
 
-    if (!baseValue) {
-      return acc;
-    }
+      if (!baseValue) {
+        return acc;
+      }
 
-    return {
-      ...acc,
-      [prop]: baseValue[0]?.plain_text ?? baseValue[0]?.rich_tech ?? baseValue,
-    };
-  }, {} as NotionBlogPostSummary);
+      return {
+        ...acc,
+        [prop]:
+          baseValue[0]?.plain_text ?? baseValue[0]?.rich_tech ?? baseValue,
+      };
+    },
+    {} as NotionBlogPostSummary,
+  ) as NotionBlogPostSummary;
+
+  return {
+    ...formattedProperties,
+    publishedDate:
+      formattedProperties.publishedDate ?? formattedProperties.created,
+  };
 }

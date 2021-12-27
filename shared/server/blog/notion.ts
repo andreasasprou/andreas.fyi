@@ -6,7 +6,7 @@ import { generateToc } from './generate-toc';
 import { formatPostProperties } from './format-post-properties';
 import { appendListBlocks } from './format-list-blocks';
 
-const notion = new Client({
+export const notion = new Client({
   auth: process.env.NOTION_SECRET,
 });
 
@@ -36,9 +36,13 @@ export const getPosts = async (cursor?: string | undefined) => {
   });
 
   return {
-    data: response.results.map((item) =>
-      formatPostProperties((item as any).properties),
-    ),
+    data: response.results
+      .map((item) => formatPostProperties((item as any).properties))
+      .sort(
+        (a, b) =>
+          new Date(b.publishedDate).getTime() -
+          new Date(a.publishedDate).getTime(),
+      ),
     next_cursor: response.next_cursor,
     has_more: response.has_more,
   };
