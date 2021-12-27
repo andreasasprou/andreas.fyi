@@ -25,6 +25,7 @@ export interface NotionBlogPostSummary {
   excerpt: string;
   created: string;
   slug: string;
+  lastModified: string;
 }
 
 export interface TableOfContentsEntry {

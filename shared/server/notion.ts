@@ -1,6 +1,7 @@
 import { Client } from '@notionhq/client';
 import { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints';
 import { Block } from '@notion-stuff/v4-types';
+import { NotionBlogPostSummary } from '../types';
 import { generateToc } from './generate-toc';
 import { formatPostProperties } from './format-post-properties';
 import { appendListBlocks } from './format-list-blocks';
@@ -42,6 +43,21 @@ export const getPosts = async (cursor?: string | undefined) => {
     has_more: response.has_more,
   };
 };
+
+export async function getAllPosts() {
+  const posts: NotionBlogPostSummary[] = [];
+  let cursor = undefined;
+
+  do {
+    const response = await getPosts(cursor);
+
+    posts.push(...response.data);
+
+    cursor = response.next_cursor as string;
+  } while (cursor);
+
+  return posts;
+}
 
 async function fetchAllChildrenBlocks(blockId: string) {
   const blocks: Block[] = [];
