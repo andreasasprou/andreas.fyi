@@ -38,7 +38,7 @@ export const Code = ({
 }) => {
   return (
     <>
-      <pre className="bg-gray-900 p-2 md:p-4 rounded mb-4 md:mb-8 overflow-x-auto">
+      <pre className="bg-gray-900 p-2 md:p-4 mb-4 md:mb-8 overflow-x-auto">
         <code
           dangerouslySetInnerHTML={{
             __html: Prism.highlight(

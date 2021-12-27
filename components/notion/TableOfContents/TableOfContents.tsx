@@ -93,7 +93,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
                   )}
                 >
                   <span
-                    className="notion-table-of-contents-item-body leading-normal  hover:bg-brand-500 hover:text-white px-1 rounded"
+                    className="notion-table-of-contents-item-body leading-normal  hover:bg-brand-500 hover:text-white px-1"
                     style={{
                       display: 'inline-block',
                       marginLeft: tocItem.indentLevel * 16,

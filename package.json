@@ -37,8 +37,6 @@
   },
   "devDependencies": {
     "@notion-stuff/v4-types": "^5.1.0",
-    "@tailwindcss/forms": "^0.4.0",
-    "@tailwindcss/typography": "^0.5.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@types/lodash.throttle": "^4.1.6",

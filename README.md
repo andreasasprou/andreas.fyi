@@ -33,6 +33,7 @@ Open http://localhost:3000 with your browser to see the result.
 - Official Notion API as headless CMS
 - Tailwind for styles
 - Next 12
+- Newsletter subscribe via Mailchimp
 
 ## Features
 

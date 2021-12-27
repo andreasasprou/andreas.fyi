@@ -16,6 +16,7 @@ export const ROUTES = {
 
 export const APIRoutes = {
   OG_IMAGE: '/api/og-image',
+  SUBSCRIBE: '/api/subscribe',
 };
 
 export const LayoutConstants = {

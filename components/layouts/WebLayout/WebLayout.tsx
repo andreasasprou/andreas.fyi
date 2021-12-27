@@ -4,6 +4,7 @@ import { PageLink } from 'components/PageLink';
 import { StyleProps } from 'shared/types';
 import classNames from 'classnames';
 import { WebHeader } from './WebHeader';
+import { SubscribeCard } from './SubscribeCard';
 
 interface WebLayoutProps extends StyleProps {
   children: ReactNode;
@@ -62,8 +63,8 @@ export function WebLayout({
       />
       <WebHeader />
       <div className="py-8 md:py-16">{children}</div>
-      {/*<SubscribeCard mt={4} />*/}
-      <div className="mt-auto">
+      <SubscribeCard />
+      <div className="mt-auto pt-8 md:pt-16">
         <p className="leading-8">
           If you'd like to get in touch, consider{' '}
           <PageLink href="mailto:andyasprou@gmail.com?subject=Hello">

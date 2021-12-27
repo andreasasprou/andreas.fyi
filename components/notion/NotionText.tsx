@@ -34,8 +34,7 @@ export function NotionText({ block }: NotionTextProps) {
         if (italic) classes += ' italic';
         if (strikethrough) classes += ' line-through';
         if (underline) classes += ' underline';
-        if (code)
-          classes += ' text-brand-500 bg-gray-900 p-[2px] rounded-[2px]';
+        if (code) classes += ' text-brand-500 bg-gray-900 p-[2px]';
 
         return (
           <Fragment key={idx}>

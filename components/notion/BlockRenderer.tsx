@@ -51,7 +51,7 @@ export function BlockRenderer({ block }: Props) {
 
     case 'callout': {
       return (
-        <div className="flex w-full p-4 rounded border border-transparent bg-gray-900 mb-4 md:mb-8">
+        <div className="flex w-full p-4 border border-transparent bg-gray-900 mb-4 md:mb-8">
           {value.icon.emoji && (
             <div className="text-yellow-500">{value.icon.emoji}</div>
           )}
@@ -115,14 +115,7 @@ export function BlockRenderer({ block }: Props) {
       const { source, caption } = getMediaProperties(value);
       return (
         <div className="flex flex-col my-8 space-y-2 max-w-[700px] mx-auto">
-          <video
-            src={source}
-            controls
-            autoPlay
-            loop
-            muted
-            className="rounded-lg"
-          />
+          <video src={source} controls autoPlay loop muted />
           {caption && <p className="text-gray-500 text-[16px]">{caption}</p>}
         </div>
       );
