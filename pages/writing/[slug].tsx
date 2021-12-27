@@ -25,7 +25,7 @@ function SlugPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
       <PageHeader
         title={post.pageInfo.name}
         subTitle={post.pageInfo.excerpt}
-        createdAt={new Date(post.pageInfo.created)}
+        createdAt={new Date(post.pageInfo.publishedDate)}
       />
       <div className="flex w-full leading-8 text-lg mx-auto">
         <div className="w-full lg:max-w-article">

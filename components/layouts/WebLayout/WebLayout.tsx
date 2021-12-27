@@ -64,8 +64,8 @@ export function WebLayout({
       <WebHeader />
       <div className="py-8 md:py-16">{children}</div>
       <SubscribeCard />
-      <div className="mt-auto pt-8 md:pt-16">
-        <p className="leading-8">
+      <div className="mt-auto pt-8 md:pt-16 leading-8">
+        <p className="">
           If you'd like to get in touch, consider{' '}
           <PageLink href="mailto:andyasprou@gmail.com?subject=Hello">
             writing an email
@@ -73,6 +73,16 @@ export function WebLayout({
           or sending a{' '}
           <PageLink href="https://twitter.com/andyasprou/" target="_blank">
             Tweet
+          </PageLink>
+          .
+        </p>
+        <p>
+          Check this site out on{' '}
+          <PageLink
+            href="https://github.com/andreasasprou/andreas.fyi"
+            target="_blank"
+          >
+            Github
           </PageLink>
           .
         </p>

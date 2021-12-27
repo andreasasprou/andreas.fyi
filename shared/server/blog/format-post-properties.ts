@@ -3,9 +3,14 @@ import {
   PropertyValueDate,
   PropertyValueRichText,
   PropertyValueTitle,
+  PropertyValue,
 } from '@notion-stuff/v4-types';
-import { PropertyValueEditedTime } from '@notion-stuff/v4-types/src/lib/types';
-import { NotionBlogPostSummary } from '../../types';
+import {
+  PropertyValueEditedTime,
+  PropertyValueType,
+} from '@notion-stuff/v4-types/src/lib/types';
+import dayjs from 'dayjs';
+import { NotionBlock, NotionBlogPostSummary } from '../../types';
 
 interface PostProperties {
   name: PropertyValueTitle;
@@ -15,21 +20,39 @@ interface PostProperties {
   publishedDate: PropertyValueDate;
 }
 
+const formatPropertyValue = (value: PropertyValue) => {
+  if (!value || !(value as any)?.[value.type]) {
+    return undefined;
+  }
+
+  switch (value.type) {
+    case 'date':
+      return dayjs(
+        (value as PropertyValueDate).date?.start ?? new Date(),
+      ).toISOString();
+    case 'rich_text':
+      return (value as PropertyValueRichText).rich_text[0].plain_text;
+    case 'title':
+      return (value as PropertyValueTitle).title[0].plain_text;
+  }
+
+  return (value as any)[value.type];
+};
+
 export function formatPostProperties(
   properties: PostProperties,
 ): NotionBlogPostSummary {
   const formattedProperties = Object.entries(properties).reduce(
     (acc, [prop, value]) => {
-      const baseValue = value?.[value?.type];
+      const propertyValue = formatPropertyValue(value);
 
-      if (!baseValue) {
+      if (!propertyValue) {
         return acc;
       }
 
       return {
         ...acc,
-        [prop]:
-          baseValue[0]?.plain_text ?? baseValue[0]?.rich_tech ?? baseValue,
+        [prop]: propertyValue,
       };
     },
     {} as NotionBlogPostSummary,

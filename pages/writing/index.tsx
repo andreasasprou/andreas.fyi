@@ -43,7 +43,7 @@ const Blog: CustomPage = ({
             title={post.name}
             excerpt={post.excerpt}
             href={ROUTES.Writing.post(post.slug)}
-            date={dayjs(new Date(post.created)).format('DD/MM/YYYY')}
+            date={dayjs(new Date(post.publishedDate)).format('DD/MM/YYYY')}
             key={post.slug}
           />
         ))}
