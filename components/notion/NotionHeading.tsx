@@ -13,17 +13,17 @@ interface HeadingConfig {
 const headingConfig: Record<HeadingBlock['type'], HeadingConfig> = {
   heading_1: {
     classes:
-      'first-child:mt-0 text-2xl md:text-4xl font-bold leading-snug mt-8 md:mt-16 mb-2 md:mb-4 text-white/90',
+      'first-of-type:mt-0 text-2xl md:text-4xl font-bold leading-snug mt-8 md:mt-16 mb-2 md:mb-4 text-white/90',
     as: 'h1',
   },
   heading_2: {
     classes:
-      'text-xl md:text-3xl font-bold mt-6 md:mt-12 mb-2 md:mb-4 text-white/90',
+      'first-of-type:mt-0 text-xl md:text-3xl font-bold mt-6 md:mt-12 mb-2 md:mb-4 text-white/90',
     as: 'h2',
   },
   heading_3: {
     classes:
-      'text-lg md:text-2xl font-bold mt-4 md:mt-8 mb-1 md:mb-2 text-white/90',
+      'first-of-type:mt-0 text-lg md:text-2xl font-bold mt-4 md:mt-8 mb-1 md:mb-2 text-white/90',
     as: 'h3',
   },
 };

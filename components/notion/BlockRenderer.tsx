@@ -132,6 +132,9 @@ export function BlockRenderer({ block }: Props) {
       return <></>;
     }
 
+    case 'table_of_contents':
+      return <></>;
+
     default: {
       return ClientConstants.isProd ? (
         <></>
