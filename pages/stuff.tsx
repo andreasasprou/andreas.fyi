@@ -118,6 +118,7 @@ export async function getStaticProps() {
     props: {
       stuff: await getAllStuff(),
     },
+    revalidate: 1,
   };
 }
 
