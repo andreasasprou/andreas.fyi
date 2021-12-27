@@ -19,7 +19,7 @@ function SlugPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
       ogImage="https://andreas.fyi/key-chars-of-early-stage-founders-og-image.jpg"
       url={`https://andreas.fyi${ROUTES.Blog.post(post.pageInfo.slug)}`}
     >
-      <div className="border-b  border-b-white/20 pb-4 mb-4">
+      <div className="border-b  border-b-white/20 pb-4 mb-4 md:pb-8 md:mb-8">
         <h1 className="mb-6 md:text-6xl text-4xl font-bold text-white/90 leading-normal">
           {post.pageInfo.name}
         </h1>

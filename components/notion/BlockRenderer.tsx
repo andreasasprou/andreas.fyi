@@ -1,6 +1,13 @@
 import { getMediaProperties } from 'shared/client/notion';
-import { Block } from '@notion-stuff/v4-types';
 import { ClientConstants } from 'shared/constants/client';
+import {
+  NotionBlock,
+  NotionBulletedListBlock,
+  NotionListBlock,
+  NotionNumberedListBlock,
+} from 'shared/types';
+import classNames from 'classnames';
+import { classed } from '../../shared/classed';
 import { NotionText } from './NotionText';
 import { NotionImage } from './NotionImage';
 import { NotionHeading } from './NotionHeading';
@@ -9,7 +16,7 @@ import { Quote } from './Quote';
 import { Tweet } from './Tweet';
 
 interface Props {
-  block: Block;
+  block: NotionBlock;
 }
 
 export function BlockRenderer({ block }: Props) {
@@ -54,6 +61,28 @@ export function BlockRenderer({ block }: Props) {
         </div>
       );
     }
+
+    case 'bulleted_list':
+      return (
+        <ul className="notion-list-item list-disc pl-6">
+          {(block as NotionBulletedListBlock).bulleted_list.children.map(
+            (listItemBlock) => (
+              <BlockRenderer key={listItemBlock.id} block={listItemBlock} />
+            ),
+          )}
+        </ul>
+      );
+
+    case 'numbered_list':
+      return (
+        <ol className="notion-list-item list-decimal pl-6">
+          {(block as NotionNumberedListBlock).numbered_list.children.map(
+            (listItemBlock) => (
+              <BlockRenderer key={listItemBlock.id} block={listItemBlock} />
+            ),
+          )}
+        </ol>
+      );
 
     case 'bulleted_list_item':
     case 'numbered_list_item': {

@@ -1,50 +1,15 @@
 import { Client } from '@notionhq/client';
 import { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints';
-import { NotionBlogPostSummary } from 'shared/types';
 import { Block } from '@notion-stuff/v4-types';
 import { generateToc } from './generate-toc';
+import { formatPostProperties } from './format-post-properties';
+import { appendListBlocks } from './format-list-blocks';
 
 const notion = new Client({
   auth: process.env.NOTION_SECRET,
 });
 
 const databaseId = 'ca29d63f09454ecfa75f1a864345dd6b';
-
-interface PostProperties {
-  name: {
-    id: 'title';
-    title: {
-      plain_text: string;
-    }[];
-  };
-  slug: {
-    id: 'title';
-    rich_text: {
-      plain_text: string;
-    }[];
-  };
-  created: {
-    created_time: string;
-  };
-}
-
-export function formatPostProperties(
-  properties: PostProperties,
-): NotionBlogPostSummary {
-  return Object.entries(properties).reduce((acc, [prop, value]) => {
-    const baseValue = value?.[value?.type];
-
-    if (!baseValue) {
-      return acc;
-    }
-
-    return {
-      ...acc,
-      [prop.toLowerCase()]:
-        baseValue[0]?.plain_text ?? baseValue[0]?.rich_tech ?? baseValue,
-    };
-  }, {} as NotionBlogPostSummary);
-}
 
 export const getPosts = async (cursor?: string | undefined) => {
   const response: QueryDatabaseResponse = await notion.databases.query({
@@ -122,7 +87,7 @@ export const getPostBySlug = async (slug: string) => {
 
   return {
     pageInfo: formatPostProperties((page as any).properties),
-    blocks,
+    blocks: appendListBlocks(blocks),
     toc: await generateToc(blocks),
   };
 };

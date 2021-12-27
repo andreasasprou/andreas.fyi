@@ -1,5 +1,12 @@
+import exp from 'constants';
 import { Argument } from 'classnames';
 import { PropsWithChildren, ReactNode } from 'react';
+import {
+  Block,
+  BulletedListItemBlock,
+  NumberedListItemBlock,
+} from '@notion-stuff/v4-types';
+import { HeadingBlock } from '@notion-stuff/v4-types/src/lib/types';
 
 export type StyleProps = PropsWithChildren<{
   className?: Argument;
@@ -20,10 +27,28 @@ export interface NotionBlogPostSummary {
   slug: string;
 }
 
-export type TOCType = 'heading_1' | 'heading_2' | 'heading_3';
-
 export interface TableOfContentsEntry {
   title: string;
-  type: TOCType;
+  type: HeadingBlock['type'];
   indentLevel: number;
 }
+
+export interface NotionNumberedListBlock {
+  id: string;
+  type: 'numbered_list';
+  numbered_list: {
+    children: NumberedListItemBlock[];
+  };
+}
+
+export interface NotionBulletedListBlock {
+  id: string;
+  type: 'bulleted_list';
+  bulleted_list: {
+    children: BulletedListItemBlock[];
+  };
+}
+
+export type NotionListBlock = NotionBulletedListBlock | NotionNumberedListBlock;
+
+export type NotionBlock = Block | NotionListBlock;

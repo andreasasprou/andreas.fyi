@@ -27,7 +27,8 @@
     "prismjs": "^1.25.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-tweet-embed": "^1.3.1"
+    "react-tweet-embed": "^1.3.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@notion-stuff/v4-types": "^5.1.0",
@@ -40,6 +41,7 @@
     "@types/nprogress": "^0.2.0",
     "@types/prismjs": "^1.16.6",
     "@types/react": "17.0.38",
+    "@types/uuid": "^8.3.3",
     "@typescript-eslint/eslint-plugin": "^5.8.0",
     "@typescript-eslint/parser": "^5.8.0",
     "autoprefixer": "^10.4.0",
