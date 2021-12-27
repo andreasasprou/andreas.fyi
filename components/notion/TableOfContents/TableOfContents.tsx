@@ -76,10 +76,10 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
 
   return (
     <div
-      className={`overflow-y-auto max-h-[100vh] sticky top-0 py-8 max-w-[380px] hidden lg:flex w-full pl-4 text-white self-start`}
+      className={`overflow-y-auto max-h-[100vh] sticky top-4 pb-8 max-w-[380px] hidden lg:flex w-full pl-4 text-white self-start`}
     >
       <div className="flex flex-col items-center">
-        <nav className="block">
+        <nav className="block space-y-2">
           {toc.map((tocItem) => {
             const id = convertHeadingToId(tocItem.title);
 
@@ -87,7 +87,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
               <Link href={`#${id}`} passHref key={id}>
                 <a
                   className={classNames(
-                    `leading-normal hover:bg-brand-500 hover:text-black px-1 text-base`,
+                    `block leading-normal hover:bg-brand-500 hover:text-black px-1 text-base`,
                     {
                       'text-brand-500': activeSection === id,
                       'text-white/80': activeSection !== id,
@@ -96,7 +96,6 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
                     },
                   )}
                   style={{
-                    display: 'inline-block',
                     marginLeft: tocItem.indentLevel * 16,
                   }}
                 >
