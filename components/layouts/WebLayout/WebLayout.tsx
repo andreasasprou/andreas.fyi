@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import { NextSeo } from 'next-seo';
-import { LargeText, PageText } from 'components/PageText';
 import { PageLink } from 'components/PageLink';
 import { StyleProps } from 'shared/types';
 import classNames from 'classnames';

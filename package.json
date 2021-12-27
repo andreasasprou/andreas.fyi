@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "jest"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
@@ -30,6 +31,8 @@
   "devDependencies": {
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.0",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
     "@types/lodash.throttle": "^4.1.6",
     "@types/node": "17.0.4",
     "@types/nprogress": "^0.2.0",
@@ -44,6 +47,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-quick-prettier": "^0.0.29",
     "husky": "^7.0.4",
+    "jest": "^27.4.5",
     "lint-staged": "^12.1.4",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",
