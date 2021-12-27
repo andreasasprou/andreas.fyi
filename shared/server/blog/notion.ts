@@ -2,6 +2,7 @@ import { Client } from '@notionhq/client';
 import { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints';
 import { Block } from '@notion-stuff/v4-types';
 import { NotionBlogPostSummary } from '../../types';
+import { ClientConstants } from '../../constants/client';
 import { generateToc } from './generate-toc';
 import { formatPostProperties } from './format-post-properties';
 import { appendListBlocks } from './format-list-blocks';
@@ -19,12 +20,29 @@ export const getPosts = async (cursor?: string | undefined) => {
     start_cursor: cursor ? cursor : undefined,
     filter: {
       and: [
-        {
-          property: 'status',
-          select: {
-            equals: 'Published',
-          },
-        },
+        ClientConstants.isProd
+          ? {
+              property: 'status',
+              select: {
+                equals: 'Published',
+              },
+            }
+          : {
+              or: [
+                {
+                  property: 'status',
+                  select: {
+                    equals: 'Published',
+                  },
+                },
+                {
+                  property: 'status',
+                  select: {
+                    equals: 'Draft',
+                  },
+                },
+              ],
+            },
         {
           property: 'slug',
           rich_text: {
@@ -96,6 +114,14 @@ export const getPostBySlug = async (slug: string) => {
       ],
     },
   });
+
+  if (post.results.length > 1) {
+    throw new Error('Multiple posts match with this slug.');
+  }
+
+  if (post.results.length === 0) {
+    throw new Error('Cannot find post with this slug');
+  }
 
   const pageId = post.results[0]!.id;
 
