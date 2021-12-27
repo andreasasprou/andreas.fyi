@@ -21,34 +21,56 @@ const Home: CustomPage = () => {
           and learn as much as possible.
         </LargeText>
         <LargeText>
-          I spend most of my time writing code and designing systems.
+          I spend most of my time writing code and designing systems to
+          streamline the process of building & running businesses.
         </LargeText>
         <LargeText>
-          In my down time I write & think deeply about my life philosophies,
-          optimizing my health and my attempt to build strong relationships.
+          In my down time I explore my hobbies, which include biohacking
+          (quantified self), life philosophy (e.g. Stoicism & Buddhism) and
+          lifestyle design.
         </LargeText>
       </VStack>
       <VStack>
         <LargeText>
-          You'll find me working on{' '}
-          <PageLink href="https://www.flick.tech" target="_blank">
-            Flick.tech
-          </PageLink>{' '}
-          and{' '}
-          <PageLink href="https://www.dweet.com" target="_blank">
-            Dweet.com
-          </PageLink>
+          Through my journey, I've been exposed to a huge number of interesting
+          problems.
         </LargeText>
         <LargeText>
-          If you'd like to get in touch, consider{' '}
-          <PageLink href="mailto:andyasprou@gmail.com?subject=Hello">
-            writing an email
-          </PageLink>{' '}
-          or sending a{' '}
-          <PageLink href="https://twitter.com/andyasprou/" target="_blank">
-            Tweet
-          </PageLink>
-          .
+          This website aims to share the lessons I've learned through my densely
+          packed early 20s. Before the age of 24, my timeline includes:
+          <ul className="list-disc pl-6 py-6">
+            <li>
+              Bootstrapping my first business{' '}
+              <PageLink href="https://www.flick.tech" target="_blank">
+                Flick.tech
+              </PageLink>{' '}
+              with my incredible team from $0 to $3M ARR within a couple of
+              years, for which I solo-engineered for most of it's lifetime. This
+              was done while graduating computer science at Imperial College
+              London in the top 3 of my cohort.
+            </li>
+            <li>
+              Co-founding my second business{' '}
+              <PageLink href="https://www.dweet.com" target="_blank">
+                Dweet.com
+              </PageLink>
+              , the first ever freelance marketplace for the Luxury, Fashion and
+              Retail industries. At Dweet, we're on a mission to empower people
+              in the Luxury & Fashion industry to have independence and
+              flexibility, deciding how, when and for whom they work.
+            </li>
+            <li>
+              Created & solo-engineered multiple side projects/businesses,
+              including:{' '}
+              <PageLink href="https://www.combox.app" target="_blank">
+                Combox.app
+              </PageLink>{' '}
+              and{' '}
+              <PageLink href="https://www.garn.io" target="_blank">
+                Garn.io
+              </PageLink>
+            </li>
+          </ul>
         </LargeText>
       </VStack>
     </VStack>
