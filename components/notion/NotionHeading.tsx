@@ -13,7 +13,7 @@ interface HeadingConfig {
 const headingConfig: Record<HeadingBlock['type'], HeadingConfig> = {
   heading_1: {
     classes:
-      'first-of-type:mt-0 text-2xl md:text-4xl font-bold leading-snug mt-8 md:mt-16 mb-2 md:mb-4 text-white/90',
+      'first-child:mt-0 text-2xl md:text-4xl font-bold leading-snug mt-8 md:mt-16 mb-2 md:mb-4 text-white/90',
     as: 'h1',
   },
   heading_2: {
