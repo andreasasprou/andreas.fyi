@@ -16,6 +16,7 @@ export const getMediaProperties = (
   return { source, caption };
 };
 
-export const convertHeadingToId = (heading: string) => {
-  return heading.toLowerCase().replace(/\s/g, '-').replace(/[?!:]/g, '');
-};
+export const convertHeadingToId = (heading: string) =>
+  encodeURIComponent(
+    heading.toLowerCase().replace(/\s/g, '-').replace(/[?!:]/g, ''),
+  );
