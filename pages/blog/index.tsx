@@ -1,12 +1,11 @@
 import React from 'react';
 import { WebLayout } from 'components/layouts/WebLayout';
 import { CustomPage } from 'shared/types';
-import { VStack } from 'components/VStack';
-import { GetStaticPaths, InferGetStaticPropsType } from 'next';
+import { InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
 import dayjs from 'dayjs';
-import { getPosts } from 'shared/server/notion';
-import { ROUTES } from 'shared/constants/client';
+import { getPosts } from 'shared/server/blog/notion';
+import { APIRoutes, ROUTES } from 'shared/constants/client';
 import { ArrowRightIcon } from '@heroicons/react/solid';
 
 interface PostLinkProps {
@@ -51,7 +50,15 @@ const Blog: CustomPage = ({
   );
 };
 
-Blog.getLayout = (page) => <WebLayout title="Blog">{page}</WebLayout>;
+Blog.getLayout = (page) => (
+  <WebLayout
+    title="Blog"
+    ogImage={`${APIRoutes.OG_IMAGE}/${encodeURIComponent('Blog')}`}
+    url={`https://andreas.fyi${ROUTES.Blog.Home}`}
+  >
+    {page}
+  </WebLayout>
+);
 
 export async function getStaticProps() {
   return {

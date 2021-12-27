@@ -14,6 +14,10 @@ export const ROUTES = {
   },
 };
 
+export const APIRoutes = {
+  OG_IMAGE: '/api/og-image',
+};
+
 export const LayoutConstants = {
   textMaxWidth: 800,
   margin: {

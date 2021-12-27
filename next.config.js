@@ -3,6 +3,14 @@ module.exports = {
   reactStrictMode: true,
   optimizeFonts: false,
   productionBrowserSourceMaps: true,
+  async rewrites() {
+    return [
+      {
+        source: '/api/og-image/(.+)',
+        destination: '/api/og-image',
+      },
+    ];
+  },
   redirects: function () {
     return [
       {

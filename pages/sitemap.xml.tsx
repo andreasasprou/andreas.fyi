@@ -2,8 +2,8 @@ import { Readable } from 'stream';
 
 import { SitemapStream, streamToPromise, SitemapItemLoose } from 'sitemap';
 import { GetServerSideProps } from 'next';
-import { getAllPosts } from '../shared/server/notion';
-import { ROUTES } from '../shared/constants/client';
+import { getAllPosts } from 'shared/server/blog/notion';
+import { ROUTES } from 'shared/constants/client';
 
 const Sitemap = () => null;
 

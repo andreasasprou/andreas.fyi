@@ -6,17 +6,19 @@ import {
 } from 'next';
 import dayjs from 'dayjs';
 import { WebLayout } from 'components/layouts/WebLayout';
-import { ROUTES } from 'shared/constants/client';
-import { getPostBySlug } from 'shared/server/notion';
+import { APIRoutes, ROUTES } from 'shared/constants/client';
 import { BlockRenderer } from 'components/notion/BlockRenderer';
 import { TableOfContents } from 'components/notion/TableOfContents';
+import { getPostBySlug } from 'shared/server/blog/notion';
 
 function SlugPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <WebLayout
       title={post.pageInfo.name}
       description={post.pageInfo.excerpt}
-      ogImage="https://andreas.fyi/key-chars-of-early-stage-founders-og-image.jpg"
+      ogImage={`${APIRoutes.OG_IMAGE}/${encodeURIComponent(
+        post.pageInfo.name,
+      )}.jpeg`}
       url={`https://andreas.fyi${ROUTES.Blog.post(post.pageInfo.slug)}`}
     >
       <div className="border-b  border-b-white/20 pb-4 mb-4 md:pb-8 md:mb-8">
