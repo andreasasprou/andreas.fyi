@@ -7,7 +7,7 @@ interface NotionVideoProps {
 }
 
 // //www.loom.com/share/3d0b326f650749bbb1fa13895dcd6563
-const loomRegexes = [/https?\:\/\/www\.loom\.com\/share\/([a-z0-9]+)/];
+const loomRegexes = [/https?:\/\/www\.loom\.com\/share\/([a-z0-9]+)/];
 
 const getLoomId = (url = '') =>
   loomRegexes
@@ -32,6 +32,7 @@ export function NotionVideo({ block }: NotionVideoProps) {
           frameBorder="0"
           allowFullScreen
           className="absolute top-0 left-0 w-full h-full"
+          title={caption ?? source}
         />
       </div>
     );
