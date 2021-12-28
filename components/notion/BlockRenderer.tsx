@@ -14,6 +14,7 @@ import { NotionHeading } from './NotionHeading';
 import { Code } from './Code';
 import { Quote } from './Quote';
 import { Tweet } from './Tweet';
+import { NotionVideo } from './NotionVideo';
 
 interface Props {
   block: NotionBlock;
@@ -112,13 +113,7 @@ export function BlockRenderer({ block }: Props) {
     }
 
     case 'video': {
-      const { source, caption } = getMediaProperties(value);
-      return (
-        <div className="flex flex-col my-8 space-y-2 max-w-[700px] mx-auto">
-          <video src={source} controls autoPlay loop muted />
-          {caption && <p className="text-gray-500 text-[16px]">{caption}</p>}
-        </div>
-      );
+      return <NotionVideo block={block} />;
     }
 
     case 'embed': {
