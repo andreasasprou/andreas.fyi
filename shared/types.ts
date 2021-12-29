@@ -27,6 +27,8 @@ export interface NotionBlogPostSummary {
   publishedDate: string;
   slug: string;
   lastModified: string;
+  tags?: string[];
+  estimatedReadingTime?: string;
 }
 
 export interface NotionStuffItem {

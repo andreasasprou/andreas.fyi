@@ -5,7 +5,10 @@ import {
   PropertyValueTitle,
   PropertyValue,
 } from '@notion-stuff/v4-types';
-import { PropertyValueEditedTime } from '@notion-stuff/v4-types/src/lib/types';
+import {
+  PropertyValueEditedTime,
+  PropertyValueMultiSelect,
+} from '@notion-stuff/v4-types/src/lib/types';
 import dayjs from 'dayjs';
 import { NotionBlogPostSummary } from '../../types';
 
@@ -15,6 +18,8 @@ interface PostProperties {
   created: PropertyValueCreatedTime;
   lastModified: PropertyValueEditedTime;
   publishedDate: PropertyValueDate;
+  tags: PropertyValueMultiSelect;
+  estimatedReadingTime: PropertyValueRichText;
 }
 
 const formatPropertyValue = (value: PropertyValue) => {
@@ -31,6 +36,10 @@ const formatPropertyValue = (value: PropertyValue) => {
       return (value as PropertyValueRichText).rich_text[0].plain_text;
     case 'title':
       return (value as PropertyValueTitle).title[0].plain_text;
+    case 'multi_select':
+      return (value as PropertyValueMultiSelect).multi_select.map(
+        (item) => item.name,
+      );
   }
 
   return (value as any)[value.type];

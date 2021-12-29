@@ -1,7 +1,9 @@
 import dayjs from 'dayjs';
 import React, { ReactNode } from 'react';
+import classNames from 'classnames';
+import { StyleProps } from '../shared/types';
 
-interface PageHeaderProps {
+interface PageHeaderProps extends StyleProps {
   title: string;
   subTitle?: string;
   createdAt?: Date;
@@ -13,9 +15,15 @@ export function PageHeader({
   subTitle,
   createdAt,
   children,
+  className,
 }: PageHeaderProps) {
   return (
-    <div className="border-b border-b-white/20 pb-4 mb-4 md:pb-8 md:mb-8">
+    <div
+      className={classNames(
+        'border-b border-b-white/20 pb-4 mb-4 md:pb-8 md:mb-8',
+        className,
+      )}
+    >
       <h1 className="md:text-6xl text-3xl font-bold text-white/90 leading-normal md:leading-[1.15] max-w-[1000px]">
         {title}
       </h1>

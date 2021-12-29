@@ -4,7 +4,6 @@ import {
   GetStaticPaths,
   GetStaticPropsContext,
 } from 'next';
-import dayjs from 'dayjs';
 import { WebLayout } from 'components/layouts/WebLayout';
 import { APIRoutes, ROUTES } from 'shared/constants/client';
 import { BlockRenderer } from 'components/notion/BlockRenderer';
