@@ -15,12 +15,12 @@ export function PageHeader({
   children,
 }: PageHeaderProps) {
   return (
-    <div className="border-b border-b-white/20 pb-4 mb-4 md:pb-8 md:mb-8 max-w-[1000px]">
-      <h1 className="md:text-6xl text-3xl font-bold text-white/90 leading-normal md:leading-[1.15]">
+    <div className="border-b border-b-white/20 pb-4 mb-4 md:pb-8 md:mb-8">
+      <h1 className="md:text-6xl text-3xl font-bold text-white/90 leading-normal md:leading-[1.15] max-w-[1000px]">
         {title}
       </h1>
       {subTitle && (
-        <p className="mt-3 md:mt-6 text-xl text-white/80 leading-normal">
+        <p className="mt-3 md:mt-6 text-xl text-white/80 leading-normal max-w-[1000px]">
           {subTitle}
         </p>
       )}
