@@ -11,19 +11,20 @@ const Home: CustomPage = () => {
     <VStack className="max-w-article">
       <VStack>
         <LargeText>
-          Hey, I'm Andreas. A deliberate, unconventional and obsessive
-          individual. This is my personal brain dump.
+          Hey, I'm Andreas. A deliberate, unconventional, obsessive and
+          intensely passionate individual. This is my personal brain dump.
         </LargeText>
       </VStack>
       <VStack>
         <LargeText>
-          I live to create, sometimes called "workaholic": attempting to
-          optimize my life around being able to create exceptional products that
-          feel like magic to use and learn as much as possible.
+          I live to create stuff, which is often confused with being a
+          "workaholic": attempting to optimize my life around being able to
+          create exceptional products that feel like magic to use and learn as
+          much as possible.
         </LargeText>
         <LargeText>
           I spend most of my time writing code and designing systems to
-          streamline the process of building & running businesses.
+          streamline the process of building & running Flick & Dweet.
         </LargeText>
         <LargeText>
           In my down time I explore my hobbies, which include biohacking
@@ -59,6 +60,22 @@ const Home: CustomPage = () => {
               Retail industries. At Dweet, we're on a mission to empower people
               in the Luxury & Fashion industry to have independence and
               flexibility, deciding how, when and for whom they work.
+            </li>
+            <li>
+              Produced award winning{' '}
+              <PageLink
+                href="https://www.imperial.ac.uk/media/imperial-college/faculty-of-engineering/computing/public/1718-ug-projects/Andreas-Asprou-Determining-(emerging)-sub-cultures-of-online-social-influencers-on-Instagram.pdf"
+                target="_blank"
+              >
+                research
+              </PageLink>{' '}
+              in the space of classification, NLP, graph embeddings,
+              recommendation systems, taxonomy construction and how they can be
+              applied to the Instagram Marketing industry. <br /> This research
+              acted as the foundations for the algorithms at Flick, which now
+              powers millions of hashtag searches for thousands of users. <br />{' '}
+              I'm now applying these same insights in the development of the
+              job-candidate matching algorithms that power Dweet.
             </li>
             <li>
               Created & solo-engineered multiple side projects/businesses,
