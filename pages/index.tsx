@@ -75,11 +75,7 @@ const Home: CustomPage = () => {
             </li>
             <li>
               Created & solo-engineered multiple side projects/businesses,
-              including:{' '}
-              <PageLink href="https://www.combox.app" target="_blank">
-                Combox.app
-              </PageLink>{' '}
-              and{' '}
+              including:
               <PageLink href="https://www.garn.io" target="_blank">
                 Garn.io
               </PageLink>
