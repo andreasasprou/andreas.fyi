@@ -45,14 +45,8 @@ class MyDocument extends Document {
                 src="https://www.googletagmanager.com/gtag/js?id=G-HKF3WQS94Y"
               />
               <script
-                dangerouslySetInnerHTML={{
-                  __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-6353F1BVDT');`,
-                }}
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-6353F1BVDT"
               />
               <script
                 dangerouslySetInnerHTML={{
