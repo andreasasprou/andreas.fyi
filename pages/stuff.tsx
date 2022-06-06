@@ -14,20 +14,18 @@ function StuffItem({ url, tags, name, notes = '' }: NotionStuffItem) {
       href={url}
       target="_blank"
       rel="noreferrer noopener"
-      className="flex md:flex-row flex-col md:justify-between md:items-center max-w-article bg-white/10 p-2 md:p-4 hover:cursor-pointer hover:bg-gray-800 transition-all"
+      className="rounded-sm flex md:flex-row flex-col md:justify-between md:items-center max-w-article bg-white/5 p-2 md:p-3 hover:cursor-pointer hover:bg-white/10 transition-all"
     >
       <div>
-        <div className="flex items-start md:items-center md:flex-row flex-col md:space-y-0 space-y-1 md:space-x-1">
-          <p className="text-brand-500 md:text-lg font-medium md:mr-2 mr-0">
-            {name}
-          </p>
+        <p className="text-white/80 md:text-md font-medium">{name}</p>
+        {notes.length > 0 && <p className="text-sm mt-2">{notes}</p>}
+        <div className="flex items-start md:items-center md:flex-row flex-col md:space-y-0 space-y-1 md:space-x-1 mt-3">
           {tags.map((tag) => (
-            <div className="px-2 bg-gray-700">
+            <div className="px-2 pb-[2px] border-solid border-[1px] border-white/10 rounded-sm">
               <span className="text-xs leading-0">{tag.name}</span>
             </div>
           ))}
         </div>
-        {notes.length > 0 && <p className="text-sm mt-2">{notes}</p>}
       </div>
       <ExternalLinkIcon className="w-full max-w-[20px] ml-auto md:block ml-8 text-gray-500 hidden" />
     </a>
@@ -52,7 +50,7 @@ const StuffPage: CustomPage = ({
           availableTags={uniqueTags}
         />
       </PageHeader>
-      <div className="min-h-[200px] flex flex-wrap gap-4">
+      <div className="min-h-[200px] flex flex-col gap-y-4">
         {stuff
           .filter((item) =>
             Boolean(item.tags.find((tag) => selectedTags.includes(tag.name))),
