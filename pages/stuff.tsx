@@ -15,14 +15,14 @@ function StuffItem({ url, tags, name, notes = '' }: NotionStuffItem) {
       href={url}
       target="_blank"
       rel="noreferrer noopener"
-      className="rounded-sm flex md:flex-row flex-col md:justify-between md:items-center max-w-article bg-white/5 p-2 md:p-3 hover:cursor-pointer hover:bg-white/10 transition-all"
+      className="flex md:flex-row flex-col md:justify-between md:items-center max-w-article hover:cursor-pointer transition-all border border-[#333] hover:border-[#666] p-2 md:p-3"
     >
       <div>
         <p className="text-white/80 md:text-md font-medium">{name}</p>
         {notes.length > 0 && <p className="text-sm mt-2">{notes}</p>}
         <div className="flex items-start md:items-center md:flex-row flex-col md:space-y-0 space-y-1 md:space-x-1 mt-3">
           {tags.map((tag) => (
-            <div className="px-2 pb-[2px] border-solid border-[1px] border-white/10 rounded-sm">
+            <div className="px-2 pb-[2px] border-solid border-[1px] bg-gray-900 border-white/10">
               <span className="text-xs leading-0">{tag.name}</span>
             </div>
           ))}
