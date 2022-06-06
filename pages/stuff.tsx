@@ -7,6 +7,7 @@ import { ExternalLinkIcon } from '@heroicons/react/outline';
 import { getAllStuff } from '../shared/server/blog/stuff';
 import { PageHeader } from '../components/PageHeader';
 import { StuffFilter } from '../components/stuff/StuffFilter';
+import { PageLink } from '../components/PageLink';
 
 function StuffItem({ url, tags, name, notes = '' }: NotionStuffItem) {
   return (
@@ -44,11 +45,23 @@ const StuffPage: CustomPage = ({
   return (
     <>
       <PageHeader title="Stuff I like">
-        <StuffFilter
-          setSelectedTags={setSelectedTags}
-          selectedTags={selectedTags}
-          availableTags={uniqueTags}
-        />
+        <div className="flex md:flex-row flex-col md:items-center mt-4">
+          <StuffFilter
+            setSelectedTags={setSelectedTags}
+            selectedTags={selectedTags}
+            availableTags={uniqueTags}
+          />
+          <span className="md:ml-1 md:mt-[2px] mt-3 md:text-base text-sm">
+            Looking for restaurants & bars? Find me on{' '}
+            <a
+              className="text-brand-500 hover:underline"
+              target="_blank"
+              href="https://link.stepyourworld.com/d9zCQwksQ8gknzDg9"
+            >
+              Step
+            </a>
+          </span>
+        </div>
       </PageHeader>
       <div className="min-h-[200px] flex flex-col gap-y-4">
         {stuff

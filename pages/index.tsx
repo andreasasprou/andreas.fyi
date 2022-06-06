@@ -14,22 +14,20 @@ const Home: CustomPage = () => {
           Hey, I'm Andreas. A deliberate, unconventional, obsessive and
           intensely passionate individual. This is my personal brain dump.
         </LargeText>
-      </VStack>
-      <VStack>
         <LargeText>
-          I live to create stuff, which is often confused with being a
-          "workaholic": attempting to optimize my life around being able to
+          You'll find me wandering around the world, slowly. Currently spending
+          60% of my time between London & Lisbon.
+        </LargeText>
+        <LargeText>
+          I live to create things people love. This is often confused with being
+          a "workaholic": attempting to optimize my life around being able to
           create exceptional products that feel like magic to use and learn as
           much as possible.
         </LargeText>
         <LargeText>
-          I spend most of my time writing code and designing systems to
-          streamline the process of building & running Flick & Dweet.
-        </LargeText>
-        <LargeText>
-          In my down time I explore my hobbies, which include biohacking
-          (quantified self), life philosophy (e.g. Stoicism & Buddhism) and
-          lifestyle design.
+          I spend most of my time exploring (the mind & the world), building
+          products, writing code, and designing systems to streamline the
+          process of building & running Flick & Dweet.
         </LargeText>
       </VStack>
       <div className="space-y-4 md:space-y-8">
@@ -73,9 +71,7 @@ const Home: CustomPage = () => {
               recommendation systems, taxonomy construction and how they can be
               applied to the Instagram Marketing industry. <br /> This research
               acted as the foundations for the algorithms at Flick, which now
-              powers millions of hashtag searches for thousands of users. <br />{' '}
-              I'm now applying these same insights in the development of the
-              job-candidate matching algorithms that power Dweet.
+              powers millions of hashtag searches for 100k+ users.
             </li>
             <li>
               Created & solo-engineered multiple side projects/businesses,
@@ -91,6 +87,22 @@ const Home: CustomPage = () => {
           </ul>
         </LargeText>
       </div>
+      <VStack>
+        <LargeText>
+          Finding the ultimate form of things proper gets me going, all the way
+          from finding the farms with highest quality pork (mangalitza) in the
+          world to the perfect suitcase.
+        </LargeText>
+        <LargeText>
+          When I manage to pry myself from my work, I love to experience the
+          best that life has to offer via experiences, inspiring people and
+          consuming stuff.
+        </LargeText>
+        <LargeText>
+          I'm a practicing biohacker (quantified self), [novice] philosopher of
+          life (e.g. Stoicism, Buddhism etc) and lifestyle designer.
+        </LargeText>
+      </VStack>
     </VStack>
   );
 };

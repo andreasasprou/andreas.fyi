@@ -7,6 +7,8 @@ import {
 } from '@heroicons/react/solid';
 import { atom, useRecoilState } from 'recoil';
 import { Fragment } from 'react';
+import classNames from 'classnames';
+import { pageLinkClasses } from '../PageLink';
 
 const state = atom<string[]>({
   key: 'stuff/selected-tags',
@@ -44,77 +46,72 @@ export function StuffFilter({
   };
 
   return (
-    <div className="w-60 mt-4">
-      <Listbox value={selectedTags} onChange={setSelectedTags} multiple>
-        <div className="relative mt-1">
-          <div className="flex items-center">
-            <span className="mr-2">Too much stuff?</span>
-            <Listbox.Button
-              as="span"
-              className="text-brand-500 relative pr-[30px] inline cursor-pointer focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300"
-            >
-              <span className="block">Hide shit</span>
-              <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                <SelectorIcon className="h-5 w-5" aria-hidden="true" />
-              </span>
-            </Listbox.Button>
-          </div>
-
-          <Transition
-            as={Fragment}
-            leave="transition ease-in duration-100"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+    <Listbox value={selectedTags} onChange={setSelectedTags} multiple>
+      <div className="relative mt-1">
+        <div className="flex items-center">
+          <span className="mr-1">Too much stuff?</span>
+          <Listbox.Button
+            as="span"
+            className={({ open }) =>
+              classNames(
+                `px-1 hover:text-black ${
+                  open ? 'text-black bg-brand-500' : 'text-brand-500'
+                } hover:bg-brand-500 dont-break-out pr-[2px] flex items-center relative inline cursor-pointer focus:outline-none focus-visible:border-white focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300`,
+              )
+            }
           >
-            <Listbox.Options className="pb-0 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-[#1a1a1a] py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-              {availableTags.map((tag, tagIdx) => (
-                <Listbox.Option
-                  key={tagIdx}
-                  className={({ active }) =>
-                    `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
-                      active ? 'bg-gray-700 text-gray-100' : 'text-gray-400'
-                    }`
-                  }
-                  value={tag}
-                >
-                  {({ selected }) => (
-                    <>
-                      <span
-                        className={`block truncate ${
-                          selected ? 'font-medium' : 'font-normal'
-                        }`}
-                      >
-                        {tag}
-                      </span>
-                      {selected ? (
-                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-brand-500">
-                          <CheckIcon className="h-5 w-5" aria-hidden="true" />
-                        </span>
-                      ) : null}
-                    </>
-                  )}
-                </Listbox.Option>
-              ))}
-              <Listbox.Label
-                as="li"
-                className="flex justify-center items-center w-full relative bg-gray-700 sticky bottom-0 cursor-pointer select-none py-2 px-4 hover:bg-brand-500 hover:text-black"
-                onClick={toggleAllSelected}
-              >
-                <>
-                  {allVisible ? (
-                    <EyeOffIcon className="h-4 w-4" aria-hidden="true" />
-                  ) : (
-                    <EyeIcon className="h-4 w-4" aria-hidden="true" />
-                  )}
-                  <span className="ml-2">
-                    {allVisible ? 'Hide all' : 'Show all'}
-                  </span>
-                </>
-              </Listbox.Label>
-            </Listbox.Options>
-          </Transition>
+            <span className="block mr-1">Hide shit</span>
+            <SelectorIcon className="h-5 w-5" aria-hidden="true" />
+          </Listbox.Button>
         </div>
-      </Listbox>
-    </div>
+
+        <Listbox.Options className="pb-0 absolute mt-1 max-h-60 w-full overflow-auto rounded-sm bg-[#1a1a1a] py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+          {availableTags.map((tag, tagIdx) => (
+            <Listbox.Option
+              key={tagIdx}
+              className={({ active }) =>
+                `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
+                  active ? 'bg-gray-700 text-gray-100' : 'text-gray-400'
+                }`
+              }
+              value={tag}
+            >
+              {({ selected }) => (
+                <>
+                  <span
+                    className={`block truncate ${
+                      selected ? 'text-white/80' : 'text-gray-400'
+                    }`}
+                  >
+                    {tag}
+                  </span>
+                  {selected ? (
+                    <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-white/80">
+                      <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                  ) : null}
+                </>
+              )}
+            </Listbox.Option>
+          ))}
+          <Listbox.Label
+            as="li"
+            className="flex justify-center items-center w-full relative bg-gray-700 sticky bottom-0 cursor-pointer select-none py-2 px-4 hover:bg-brand-500 hover:text-black"
+            onClick={toggleAllSelected}
+          >
+            <>
+              {allVisible ? (
+                <EyeOffIcon className="h-4 w-4" aria-hidden="true" />
+              ) : (
+                <EyeIcon className="h-4 w-4" aria-hidden="true" />
+              )}
+              <span className="ml-2">
+                {allVisible ? 'Hide all' : 'Show all'}
+              </span>
+            </>
+          </Listbox.Label>
+        </Listbox.Options>
+      </div>
+    </Listbox>
   );
 }
