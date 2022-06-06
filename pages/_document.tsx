@@ -51,7 +51,7 @@ class MyDocument extends Document {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'G-HKF3WQS94Y');`,
+            gtag('config', 'G-6353F1BVDT');`,
                 }}
               />
               <script
