@@ -1,12 +1,12 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { WebLayout } from 'components/layouts/WebLayout';
 import { CustomPage, NotionStuffItem } from 'shared/types';
 import { InferGetStaticPropsType } from 'next';
 import { APIRoutes, ROUTES } from 'shared/constants/client';
 import { ExternalLinkIcon } from '@heroicons/react/outline';
-import classNames from 'classnames';
 import { getAllStuff } from '../shared/server/blog/stuff';
 import { PageHeader } from '../components/PageHeader';
+import { StuffFilter } from '../components/stuff/StuffFilter';
 
 function StuffItem({ url, tags, name, notes = '' }: NotionStuffItem) {
   return (
@@ -34,32 +34,6 @@ function StuffItem({ url, tags, name, notes = '' }: NotionStuffItem) {
   );
 }
 
-interface TagsSelectorProps {
-  tags: { isActive: boolean; title: string }[];
-  onToggle: (tag: string) => void;
-}
-
-function TagsSelector({ tags, onToggle }: TagsSelectorProps) {
-  return (
-    <div className="flex flex-wrap overflow-x-auto gap-4 mt-6">
-      {tags.map(({ title, isActive }) => (
-        <button
-          key={title}
-          className={classNames('px-2 md:px-3 md:py-2 py-1 flex-shrink-0', {
-            'bg-brand-500': isActive,
-            'text-black': isActive,
-            'bg-gray-700': !isActive,
-            'text-white': !isActive,
-          })}
-          onClick={() => onToggle(title)}
-        >
-          <span className="leading-0">{title}</span>
-        </button>
-      ))}
-    </div>
-  );
-}
-
 const StuffPage: CustomPage = ({
   stuff,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -69,28 +43,16 @@ const StuffPage: CustomPage = ({
 
   const [selectedTags, setSelectedTags] = useState(uniqueTags);
 
-  const onToggle = useCallback((tag: string) => {
-    setSelectedTags((oldTags) => {
-      if (oldTags.includes(tag)) {
-        return oldTags.filter((oldTag) => oldTag !== tag);
-      }
-
-      return [...oldTags, tag];
-    });
-  }, []);
-
   return (
     <>
       <PageHeader title="Stuff I like">
-        <TagsSelector
-          tags={uniqueTags.map((tag) => ({
-            title: tag,
-            isActive: selectedTags.includes(tag),
-          }))}
-          onToggle={onToggle}
+        <StuffFilter
+          setSelectedTags={setSelectedTags}
+          selectedTags={selectedTags}
+          availableTags={uniqueTags}
         />
       </PageHeader>
-      <div className="flex flex-wrap gap-4">
+      <div className="min-h-[200px] flex flex-wrap gap-4">
         {stuff
           .filter((item) =>
             Boolean(item.tags.find((tag) => selectedTags.includes(tag.name))),

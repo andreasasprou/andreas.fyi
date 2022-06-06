@@ -24,19 +24,21 @@ export function PageHeader({
         className,
       )}
     >
-      <h1 className="md:text-6xl text-3xl font-bold text-white/90 leading-normal md:leading-[1.15] max-w-[1000px]">
-        {title}
-      </h1>
-      {subTitle && (
-        <p className="mt-3 md:mt-6 text-xl text-white/80 leading-normal max-w-[1000px]">
-          {subTitle}
-        </p>
-      )}
-      {createdAt && (
-        <p className="text-white/70 mt-4">
-          {dayjs(createdAt).format('MMM D, YYYY')}
-        </p>
-      )}
+      <div>
+        <h1 className="md:text-6xl text-3xl font-bold text-white/90 leading-normal md:leading-[1.15] max-w-[1000px]">
+          {title}
+        </h1>
+        {subTitle && (
+          <p className="mt-3 md:mt-6 text-xl text-white/80 leading-normal max-w-[1000px]">
+            {subTitle}
+          </p>
+        )}
+        {createdAt && (
+          <p className="text-white/70 mt-4">
+            {dayjs(createdAt).format('MMM D, YYYY')}
+          </p>
+        )}
+      </div>
       {children}
     </div>
   );
