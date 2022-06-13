@@ -5,7 +5,6 @@ import Document, {
   NextScript,
   DocumentContext,
 } from 'next/document';
-import { ClientConstants } from 'shared/constants/client';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -38,32 +37,6 @@ class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
           <link rel="stylesheet" href="/fonts/silka/stylesheet.css" />
-          {ClientConstants.isProd && (
-            <>
-              <script
-                async
-                src="https://www.googletagmanager.com/gtag/js?id=G-HKF3WQS94Y"
-              />
-              <script
-                async
-                src="https://www.googletagmanager.com/gtag/js?id=G-6353F1BVDT"
-              />
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: `
-              (function(h,o,t,j,a,r){
-                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-                h._hjSettings={hjid:3006162,hjsv:6};
-                a=o.getElementsByTagName('head')[0];
-                r=o.createElement('script');r.async=1;
-                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-                a.appendChild(r);
-              })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');    
-                  `,
-                }}
-              />
-            </>
-          )}
         </Head>
         <body>
           <Main />
