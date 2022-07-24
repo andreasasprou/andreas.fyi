@@ -15,14 +15,25 @@ const Home: CustomPage = () => {
           intensely passionate individual. This is my personal brain dump.
         </LargeText>
         <LargeText>
-          You'll find me wandering around the world, slowly. Currently spending
-          60% of my time between London & Lisbon.
+          I'm the co-founder of{' '}
+          <PageLink href="https://www.flick.tech" target="_blank">
+            Flick.tech
+          </PageLink>{' '}
+          and{' '}
+          <PageLink href="https://www.dweet.com" target="_blank">
+            Dweet.com
+          </PageLink>
+          .
         </LargeText>
         <LargeText>
-          I live to create things people love. This is often confused with being
-          a "workaholic": attempting to optimize my life around being able to
-          create exceptional products that feel like magic to use and learn as
-          much as possible.
+          You'll find me wandering around the world, slowly. Currently spending
+          most of my time between London & Lisbon.
+        </LargeText>
+        <LargeText>
+          I live to create beautiful experiences via digital products. This is
+          often confused with being a "workaholic": attempting to optimize my
+          life around being able to create exceptional products that feel like
+          magic to use and learn as much as possible.
         </LargeText>
         <LargeText>
           I spend most of my time exploring (the mind & the world), building
@@ -85,14 +96,9 @@ const Home: CustomPage = () => {
       </div>
       <VStack>
         <LargeText>
-          Finding the ultimate form of things proper gets me going, all the way
-          from finding the farms with highest quality pork (mangalitza) in the
-          world to the perfect suitcase.
-        </LargeText>
-        <LargeText>
-          When I manage to pry myself from my work, I love to experience the
-          best that life has to offer via experiences, inspiring people and
-          consuming stuff.
+          When I manage to pry myself from my work, I love to live the best that
+          life has to offer, via experiences, inspiring people and beautiful
+          stuff.
         </LargeText>
         <LargeText>
           I'm a practicing biohacker (quantified self), [novice] philosopher of
