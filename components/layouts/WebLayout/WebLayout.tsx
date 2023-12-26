@@ -70,9 +70,9 @@ export function WebLayout({
           <PageLink href="mailto:andyasprou@gmail.com?subject=Hello">
             writing an email
           </PageLink>{' '}
-          or sending a{' '}
-          <PageLink href="https://twitter.com/andyasprou/" target="_blank">
-            Tweet
+          or reaching out on{' '}
+          <PageLink href="https://www.x.com/andyasprou/" target="_blank">
+            X
           </PageLink>
           .
         </p>

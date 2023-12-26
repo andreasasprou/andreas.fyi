@@ -11,13 +11,12 @@ const Home: CustomPage = () => {
     <VStack className="max-w-article">
       <VStack>
         <LargeText>
-          Hey, I'm Andreas. A deliberate, unconventional, obsessive and
-          intensely passionate individual. This is my personal brain dump.
+          Hey, I'm Andreas. I'm unconventional, obsessive and passionate.
         </LargeText>
         <LargeText>
           I'm the co-founder of{' '}
-          <PageLink href="https://www.flick.tech" target="_blank">
-            Flick.tech
+          <PageLink href="https://www.flick.social" target="_blank">
+            Flick.social
           </PageLink>{' '}
           and{' '}
           <PageLink href="https://www.dweet.com" target="_blank">
@@ -26,49 +25,32 @@ const Home: CustomPage = () => {
           .
         </LargeText>
         <LargeText>
-          You'll find me wandering around the world, slowly. Currently spending
-          most of my time between London & Lisbon.
-        </LargeText>
+          Currently obsessed with existential philosophy (Sartre, Nietzsche, Camus, and Dostoevsky) biohacking/self-discovery with AI and the future of work.</LargeText>
         <LargeText>
-          I live to create beautiful experiences via digital products. This is
-          often confused with being a "workaholic": attempting to optimize my
-          life around being able to create exceptional products that feel like
-          magic to use and learn as much as possible.
-        </LargeText>
-        <LargeText>
-          I spend most of my time exploring (the mind & the world), building
-          products, writing code, and designing systems to streamline the
-          process of building & running Flick & Dweet.
+          I'm into finding <PageLink
+          href={ROUTES.Stuff.Home}
+          target="_blank"
+        >
+          cool products
+        </PageLink>.
         </LargeText>
       </VStack>
       <div className="space-y-4 md:space-y-8">
         <LargeText>
-          Through my journey, I've been exposed to a huge number of interesting
-          problems.
-        </LargeText>
-        <LargeText>
-          This website aims to share the lessons I've learned through my densely
-          packed early 20s. Before the age of 24, my timeline includes:
+          I'm currently in my late 30s. Before the age of 24, my timeline included:
           <ul className="list-disc pl-6 py-6">
             <li>
               Bootstrapped my first business{' '}
-              <PageLink href="https://www.flick.tech" target="_blank">
-                Flick.tech
+              <PageLink href="https://www.flick.social" target="_blank">
+                Flick.social
               </PageLink>{' '}
-              with my incredible team from $0 to $3M ARR within a couple of
-              years, for which I solo-engineered for most of it's lifetime. This
-              was done while graduating computer science at Imperial College
-              London in the top 3 of my cohort.
+              (with my incredible team) from $0 to $3M ARR within a couple of years. This was done whilst I studied computer science at Imperial College London, graduating in the top 3 of the cohort.
             </li>
             <li>
               Co-founded my second business{' '}
               <PageLink href="https://www.dweet.com" target="_blank">
                 Dweet.com
-              </PageLink>
-              , the first ever freelance marketplace for the Luxury, Fashion and
-              Retail industries. At Dweet, we're on a mission to empower people
-              in the Luxury & Fashion industry to have independence and
-              flexibility, deciding how, when and for whom they work.
+              </PageLink>, the first talent marketplace for the Fashion & Luxury industry.
             </li>
             <li>
               Produced award winning{' '}
@@ -84,27 +66,9 @@ const Home: CustomPage = () => {
               acted as the foundations for the algorithms at Flick, which now
               powers millions of hashtag searches for 100k+ users.
             </li>
-            <li>
-              Created & solo-engineered multiple side projects/businesses,
-              including:
-              <PageLink href="https://www.garn.io" target="_blank">
-                Garn.io
-              </PageLink>
-            </li>
           </ul>
         </LargeText>
       </div>
-      <VStack>
-        <LargeText>
-          When I manage to pry myself from my work, I love to live the best that
-          life has to offer, via experiences, inspiring people and beautiful
-          stuff.
-        </LargeText>
-        <LargeText>
-          I'm a practicing biohacker (quantified self), [novice] philosopher of
-          life (e.g. Stoicism, Buddhism etc) and lifestyle designer.
-        </LargeText>
-      </VStack>
     </VStack>
   );
 };
