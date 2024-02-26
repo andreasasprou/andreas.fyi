@@ -25,19 +25,24 @@ const Home: CustomPage = () => {
           .
         </LargeText>
         <LargeText>
-          Currently obsessed with existential philosophy (Sartre, Nietzsche, Camus, and Dostoevsky) biohacking/self-discovery with AI and the future of work.</LargeText>
+          Currently obsessed with: philosophy (right now Sartre, Nietzsche, Camus, and Dostoevsky), biohacking/self-discovery with AI and the future of work.</LargeText>
         <LargeText>
           I'm into finding <PageLink
           href={ROUTES.Stuff.Home}
           target="_blank"
         >
-          cool products
+          cool stuff
+        </PageLink>, and write <PageLink
+          href={ROUTES.Writing.Home}
+          target="_blank"
+        >
+          here.
         </PageLink>.
         </LargeText>
       </VStack>
       <div className="space-y-4 md:space-y-8">
         <LargeText>
-          I'm currently in my late 30s. Before the age of 24, my timeline included:
+          I'm currently in my late 20s. Before the age of 24, my timeline included:
           <ul className="list-disc pl-6 py-6">
             <li>
               Bootstrapped my first business{' '}
