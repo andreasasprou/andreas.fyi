@@ -4,14 +4,19 @@ import { CustomPage } from 'shared/types';
 import { VStack } from 'components/VStack';
 import { PageLink } from 'components/PageLink';
 import { LargeText } from 'components/PageText';
+import { InferGetServerSidePropsType } from 'next';
 import { APIRoutes, ROUTES } from '../shared/constants/client';
+import { getPosts } from '../shared/server/blog/notion';
 
-const Home: CustomPage = () => {
+const Home: CustomPage = ({
+  posts,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <VStack className="max-w-article">
       <VStack>
         <LargeText>
-          Hey, I'm Andreas. I'm unconventional, obsessive and passionate.
+          Hey there, I'm Andreas - an unapologetically unconventional guy with a
+          borderline obsessive passion for what I do (and life).
         </LargeText>
         <LargeText>
           I'm the co-founder of{' '}
@@ -25,53 +30,52 @@ const Home: CustomPage = () => {
           .
         </LargeText>
         <LargeText>
-          Currently obsessed with: philosophy (right now Sartre, Nietzsche, Camus, and Dostoevsky), biohacking/self-discovery with AI and the future of work.</LargeText>
+          Currently obsessed with philosophy, diving deep into existentialism
+          heavyweights like Sartre, Nietzsche, Camus, and Dostoevsky. Also
+          exploring the biohacking/self-quantification, and the future of work.
+        </LargeText>
         <LargeText>
-          I'm into finding <PageLink
-          href={ROUTES.Stuff.Home}
-          target="_blank"
-        >
-          cool stuff
-        </PageLink>, and write <PageLink
-          href={ROUTES.Writing.Home}
-          target="_blank"
-        >
-          here.
-        </PageLink>.
+          I'm into finding{' '}
+          <PageLink href={ROUTES.Stuff.Home} target="_blank">
+            cool stuff
+          </PageLink>
+          , and write{' '}
+          <PageLink href={ROUTES.Writing.Home} target="_blank">
+            here.
+          </PageLink>
+          .
         </LargeText>
       </VStack>
-      <div className="space-y-4 md:space-y-8">
+      <LargeText>
+        Before the age of 24, I bootstrapped my first business{' '}
+        <PageLink href="https://www.flick.social" target="_blank">
+          Flick.social
+        </PageLink>{' '}
+        from 0 to 6 figure ARR in a few years, while studying computer science
+        at Imperial College London and graduating top of my class.
+      </LargeText>
+      <LargeText>
+        Not one to rest on my laurels, I then co-founded my second startup{' '}
+        <PageLink href="https://www.dweet.com" target="_blank">
+          Dweet.com
+        </PageLink>
+        , the first talent marketplace for the Fashion & Luxury industry.
+      </LargeText>
+      <div>
+        <LargeText>Recent Musings</LargeText>
+        <ul className="list-disc pl-6 py-6 flex flex-col gap-4">
+          {posts.map((post) => (
+            <li key={post.slug}>
+              <LargeText>
+                <PageLink href={ROUTES.Writing.post(post.slug)}>
+                  {post.title}
+                </PageLink>
+              </LargeText>
+            </li>
+          ))}
+        </ul>
         <LargeText>
-          I'm currently in my late 20s. Before the age of 24, my timeline included:
-          <ul className="list-disc pl-6 py-6">
-            <li>
-              Bootstrapped my first business{' '}
-              <PageLink href="https://www.flick.social" target="_blank">
-                Flick.social
-              </PageLink>{' '}
-              (with my incredible team) from $0 to $3M ARR within a couple of years. This was done whilst I studied computer science at Imperial College London, graduating in the top 3 of the cohort.
-            </li>
-            <li>
-              Co-founded my second business{' '}
-              <PageLink href="https://www.dweet.com" target="_blank">
-                Dweet.com
-              </PageLink>, the first talent marketplace for the Fashion & Luxury industry.
-            </li>
-            <li>
-              Produced award winning{' '}
-              <PageLink
-                href="https://www.imperial.ac.uk/media/imperial-college/faculty-of-engineering/computing/public/1718-ug-projects/Andreas-Asprou-Determining-(emerging)-sub-cultures-of-online-social-influencers-on-Instagram.pdf"
-                target="_blank"
-              >
-                research
-              </PageLink>{' '}
-              in the space of classification, NLP, graph embeddings,
-              recommendation systems, taxonomy construction and how they can be
-              applied to the Instagram Marketing industry. <br /> This research
-              acted as the foundations for the algorithms at Flick, which now
-              powers millions of hashtag searches for 100k+ users.
-            </li>
-          </ul>
+          <PageLink href={ROUTES.Writing.Home}>See all -{'>'}</PageLink>
         </LargeText>
       </div>
     </VStack>
@@ -87,5 +91,28 @@ Home.getLayout = (page) => (
     {page}
   </WebLayout>
 );
+
+export const getServerSideProps = async () => {
+  try {
+    const posts = await getPosts();
+
+    return {
+      props: {
+        posts: posts.data.slice(0, 3).map((post) => ({
+          title: post.name,
+          slug: post.slug,
+        })),
+      },
+    };
+  } catch (error) {
+    console.error(error);
+
+    return {
+      props: {
+        posts: [],
+      },
+    };
+  }
+};
 
 export default Home;

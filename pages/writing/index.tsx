@@ -2,7 +2,7 @@ import React from 'react';
 import { WebLayout } from 'components/layouts/WebLayout';
 import { CustomPage } from 'shared/types';
 import { InferGetStaticPropsType } from 'next';
-import { getPosts } from 'shared/server/blog/notion';
+import { getAllPosts, getPosts } from 'shared/server/blog/notion';
 import { APIRoutes, ROUTES } from 'shared/constants/client';
 import { PageHeader } from 'components/PageHeader';
 import { PostSummaryLink } from 'components/PostSummaryLink';
@@ -14,7 +14,7 @@ const Blog: CustomPage = ({
     <>
       <PageHeader title="Writing" className="border-b-0 pb-2 md:pb-4" />
       <div className="space-y-4 md:space-y-6">
-        {posts.data.map((post) => (
+        {posts.map((post) => (
           <PostSummaryLink
             {...post}
             href={ROUTES.Writing.post(post.slug)}
@@ -39,7 +39,7 @@ Blog.getLayout = (page) => (
 export async function getStaticProps() {
   return {
     props: {
-      posts: await getPosts(),
+      posts: await getAllPosts(),
     },
     revalidate: 1,
   };
