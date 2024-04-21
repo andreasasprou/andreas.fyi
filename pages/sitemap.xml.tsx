@@ -10,13 +10,14 @@ const Sitemap = () => null;
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const links: SitemapItemLoose[] = [
     { url: ROUTES.Writing.Home, priority: 1 },
+    { url: ROUTES.Stuff.Home, priority: 1 },
     { url: ROUTES.Home, priority: 1 },
   ];
 
   (await getAllPosts()).forEach((post) => {
     links.push({
       url: ROUTES.Writing.post(post.slug),
-      lastmodISO: new Date(post.lastModified).toISOString(),
+      priority: 1
     });
   });
 

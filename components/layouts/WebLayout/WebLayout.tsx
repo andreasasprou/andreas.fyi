@@ -10,7 +10,7 @@ interface WebLayoutProps extends StyleProps {
   children: ReactNode;
   title: string | string[];
   ogImage?: string;
-  url?: string;
+  url: string;
   description?: string;
 }
 
@@ -31,33 +31,29 @@ export function WebLayout({
     >
       <NextSeo
         title={`${title} - Andreas Asprou`}
-        description="Andreas Asprou."
+        description={description ?? 'Andreas Asprou.'}
         twitter={{
           handle: '@andyasprou',
           site: '@andyasprou',
           cardType: 'summary_large_image',
         }}
+        openGraph={{
+          url,
+          title: title as string,
+          description,
+          images: ogImage ? [
+            {
+              url: ogImage,
+              width: 2400,
+              height: 1257,
+              alt: title as string,
+            },
+          ] : [],
+          site_name: 'Andreas.fyi',
+        }}
         {...(url
           ? {
               canonical: url,
-            }
-          : {})}
-        {...(ogImage
-          ? {
-              openGraph: {
-                url: url,
-                title: title as string,
-                description,
-                images: [
-                  {
-                    url: ogImage,
-                    width: 2400,
-                    height: 1257,
-                    alt: title as string,
-                  },
-                ],
-                site_name: 'Andreas.fyi',
-              },
             }
           : {})}
       />
