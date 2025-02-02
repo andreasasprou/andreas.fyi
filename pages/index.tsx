@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import { WebLayout } from 'components/layouts/WebLayout';
 import { CustomPage } from 'shared/types';
 import { VStack } from 'components/VStack';
@@ -51,11 +51,10 @@ const Home: CustomPage = ({
         <PageLink href="https://www.flick.social" target="_blank">
           Flick.social
         </PageLink>{' '}
-        from 0 to 6 figure ARR in a few years, while studying computer science
-        at Imperial College London and graduating top of my class.
+        from 0 to 6 figure ARR in a few years, ans since then worked on other fun stuff.
       </LargeText>
       <LargeText>
-        Not one to rest on my laurels, I then co-founded my second startup{' '}
+        e.g. my second startup{' '}
         <PageLink href="https://www.dweet.com" target="_blank">
           Dweet.com
         </PageLink>
