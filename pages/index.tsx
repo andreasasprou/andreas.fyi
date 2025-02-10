@@ -51,7 +51,7 @@ const Home: CustomPage = ({
         <PageLink href="https://www.flick.social" target="_blank">
           Flick.social
         </PageLink>{' '}
-        from 0 to 6 figure ARR in a few years, ans since then worked on other fun stuff.
+        from 0 to 6 figure ARR in a few years, and since then worked on other fun stuff.
       </LargeText>
       <LargeText>
         e.g. my second startup{' '}
