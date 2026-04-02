@@ -15,50 +15,49 @@ const Home: CustomPage = ({
     <VStack className="max-w-article">
       <VStack>
         <LargeText>
-          Hey there, I'm Andreas - an unapologetically unconventional guy with a
-          borderline obsessive passion for what I do (and life).
+          Hey there, I'm Andreas. I build things and I don't really stop
+          thinking about them.
         </LargeText>
         <LargeText>
-          I'm the co-founder of{' '}
-          <PageLink href="https://www.flick.social" target="_blank">
-            Flick.social
-          </PageLink>{' '}
-          and{' '}
-          <PageLink href="https://www.dweet.com" target="_blank">
-            Dweet.com
-          </PageLink>
-          .
+          I'm building a few things right now:
         </LargeText>
         <LargeText>
-          Currently obsessed with philosophy, diving deep into existentialism
-          heavyweights like Sartre, Nietzsche, Camus, and Dostoevsky. Also
-          exploring the biohacking/self-quantification, and the future of work.
+          <PageLink href="https://nova.dweet.com" target="_blank">
+            Nova
+          </PageLink>
+          , OpenClaw for recruiters. Screens, sources, and rediscovers
+          candidates across your existing tools.
         </LargeText>
         <LargeText>
-          I'm into finding{' '}
-          <PageLink href={ROUTES.Stuff.Home} target="_blank">
-            cool stuff
+          <PageLink href="https://www.intavia.ai" target="_blank">
+            Intavia
           </PageLink>
-          , and write{' '}
-          <PageLink href={ROUTES.Writing.Home} target="_blank">
-            here.
+          , AI receptionists for appointment-led businesses.
+        </LargeText>
+        <LargeText>
+          <PageLink href="https://www.ai-primer.com/engineer" target="_blank">
+            AI Primer
           </PageLink>
-          .
+          , the AI news firehose distilled daily.
+        </LargeText>
+        <LargeText>
+          <PageLink href="https://github.com/andreasasprou/polaris" target="_blank">
+            Polaris
+          </PageLink>
+          , open source Devin. Bring your own API keys.
         </LargeText>
       </VStack>
       <LargeText>
-        Before the age of 24, I bootstrapped my first business{' '}
+        Before the age of 24, I bootstrapped{' '}
         <PageLink href="https://www.flick.social" target="_blank">
-          Flick.social
+          Flick
         </PageLink>{' '}
-        from 0 to 6 figure ARR in a few years, and since then worked on other fun stuff.
-      </LargeText>
-      <LargeText>
-        e.g. my second startup{' '}
+        from 0 to 6 figure ARR. Then built{' '}
         <PageLink href="https://www.dweet.com" target="_blank">
-          Dweet.com
+          Dweet
         </PageLink>
-        , the first talent marketplace for the Fashion & Luxury industry.
+        , the first talent marketplace for Fashion & Luxury, which evolved
+        into Nova.
       </LargeText>
       <div>
         <LargeText>Recent Musings</LargeText>
