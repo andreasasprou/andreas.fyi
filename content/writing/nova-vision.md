@@ -10,8 +10,6 @@ tags:
 estimatedReadingTime: "6 min"
 ---
 
-# Nova's next phase: the personal AI agent for recruiting
-
 People are running personal AI agents across all their tools. Email, Slack, calendar, CRM, files. One agent that remembers context, connects to your services, and actually does things across all of them. That shift is permanent.
 
 We are building that for recruiting.
