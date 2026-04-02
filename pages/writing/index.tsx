@@ -2,7 +2,7 @@ import React from 'react';
 import { WebLayout } from 'components/layouts/WebLayout';
 import { CustomPage } from 'shared/types';
 import { InferGetStaticPropsType } from 'next';
-import { getAllPosts, getPosts } from 'shared/server/blog/notion';
+import { getAllPostsCombined } from 'shared/server/blog/notion';
 import { APIRoutes, ROUTES } from 'shared/constants/client';
 import { PageHeader } from 'components/PageHeader';
 import { PostSummaryLink } from 'components/PostSummaryLink';
@@ -39,7 +39,7 @@ Blog.getLayout = (page) => (
 export async function getStaticProps() {
   return {
     props: {
-      posts: await getAllPosts(),
+      posts: await getAllPostsCombined(),
     },
     revalidate: 1,
   };

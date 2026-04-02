@@ -8,7 +8,10 @@ import { WebLayout } from 'components/layouts/WebLayout';
 import { APIRoutes, ROUTES } from 'shared/constants/client';
 import { BlockRenderer } from 'components/notion/BlockRenderer';
 import { TableOfContents } from 'components/notion/TableOfContents';
-import { getAllPosts, getPostBySlug } from 'shared/server/blog/notion';
+import {
+  getAllPostsCombined,
+  getPostBySlugCombined,
+} from 'shared/server/blog/notion';
 import { PageHeader } from '../../components/PageHeader';
 
 function SlugPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -28,9 +31,16 @@ function SlugPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
       />
       <div className="flex w-full leading-8 text-lg mx-auto">
         <div className="w-full lg:max-w-article">
-          {post.blocks.map((block) => (
-            <BlockRenderer key={block.id} block={block} />
-          ))}
+          {post.source === 'markdown' ? (
+            <div
+              className="prose prose-invert prose-lg max-w-none"
+              dangerouslySetInnerHTML={{ __html: post.html }}
+            />
+          ) : (
+            post.blocks.map((block) => (
+              <BlockRenderer key={block.id} block={block} />
+            ))
+          )}
         </div>
         <TableOfContents toc={post.toc} />
       </div>
@@ -39,7 +49,7 @@ function SlugPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = await getAllPosts();
+  const allPosts = await getAllPostsCombined();
 
   return {
     paths: allPosts.map((post) => ({
@@ -52,7 +62,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export async function getStaticProps({ params }: GetStaticPropsContext) {
-  const post = await getPostBySlug(String(params!.slug));
+  const post = await getPostBySlugCombined(String(params!.slug));
 
   return {
     props: {

@@ -6,6 +6,7 @@ import { ClientConstants } from '../../constants/client';
 import { generateToc } from './generate-toc';
 import { formatPostProperties } from './format-post-properties';
 import { appendListBlocks } from './format-list-blocks';
+import { getMarkdownPosts, getMarkdownPostBySlug } from './markdown';
 
 export const notion = new Client({
   auth: process.env.NOTION_SECRET,
@@ -144,3 +145,44 @@ export const getPostById = async (postId: string) => {
 
   return { pageInfo: post, blocks: blocks.results };
 };
+
+// --- Combined sources (Notion + local markdown) ---
+
+export async function getAllPostsCombined(): Promise<NotionBlogPostSummary[]> {
+  const [notionPosts, markdownPosts] = await Promise.all([
+    getAllPosts(),
+    Promise.resolve(getMarkdownPosts()),
+  ]);
+
+  return [...notionPosts, ...markdownPosts].sort(
+    (a, b) =>
+      new Date(b.publishedDate).getTime() -
+      new Date(a.publishedDate).getTime(),
+  );
+}
+
+export async function getPostBySlugCombined(slug: string) {
+  // Check markdown first (fast, no network)
+  const mdPost = getMarkdownPostBySlug(slug);
+  if (mdPost) {
+    return { source: 'markdown' as const, ...mdPost };
+  }
+
+  const notionPost = await getPostBySlug(slug);
+  return { source: 'notion' as const, ...notionPost };
+}
+
+export async function getPostsCombined(cursor?: string) {
+  const notionResponse = await getPosts(cursor);
+  // Only merge markdown posts on the first page (no cursor)
+  if (!cursor) {
+    const markdownPosts = getMarkdownPosts();
+    const combined = [...notionResponse.data, ...markdownPosts].sort(
+      (a, b) =>
+        new Date(b.publishedDate).getTime() -
+        new Date(a.publishedDate).getTime(),
+    );
+    return { ...notionResponse, data: combined };
+  }
+  return notionResponse;
+}

@@ -6,7 +6,7 @@ import { PageLink } from 'components/PageLink';
 import { LargeText } from 'components/PageText';
 import { InferGetServerSidePropsType } from 'next';
 import { APIRoutes, ROUTES } from '../shared/constants/client';
-import { getPosts } from '../shared/server/blog/notion';
+import { getPostsCombined } from '../shared/server/blog/notion';
 
 const Home: CustomPage = ({
   posts,
@@ -92,7 +92,7 @@ Home.getLayout = (page) => (
 
 export const getServerSideProps = async () => {
   try {
-    const posts = await getPosts();
+    const posts = await getPostsCombined();
 
     return {
       props: {
