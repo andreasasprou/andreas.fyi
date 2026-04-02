@@ -6,6 +6,19 @@ import { NotionBlogPostSummary, TableOfContentsEntry } from '../../types';
 
 const contentDir = path.join(process.cwd(), 'content', 'writing');
 
+function convertHeadingToId(heading: string) {
+  return encodeURIComponent(
+    heading.toLowerCase().replace(/\s/g, '-').replace(/[?!:]/g, ''),
+  );
+}
+
+const renderer = new marked.Renderer();
+renderer.heading = (text: string, level: number) => {
+  const id = convertHeadingToId(text);
+  const tag = `h${level}`;
+  return `<${tag} id="${id}" data-id="${id}" class="notion-h">${text}</${tag}>`;
+};
+
 interface MarkdownFrontmatter {
   title: string;
   slug: string;
@@ -56,7 +69,7 @@ export function getMarkdownPostBySlug(slug: string) {
 
     if (fm.slug !== slug) continue;
 
-    const html = marked(content) as string;
+    const html = marked(content, { renderer }) as string;
     const toc = extractToc(content);
 
     return {
