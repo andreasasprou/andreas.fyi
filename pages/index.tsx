@@ -22,11 +22,23 @@ const Home: CustomPage = ({
           I'm building a few things right now:
         </LargeText>
         <LargeText>
+          <PageLink
+            href="https://plrs.sh/home?utm_source=andreas.fyi&utm_medium=referral&utm_campaign=homepage"
+            target="_blank"
+          >
+            Polaris
+          </PageLink>
+          , a cloud workbench for coding agents. Run Claude Code, Codex and Pi
+          on your own subscriptions or API keys, each on its own machine, and
+          pick up any session from any device.
+        </LargeText>
+        <LargeText>
           <PageLink href="https://nova.dweet.com" target="_blank">
             Nova
           </PageLink>
-          , OpenClaw for recruiters. Screens, sources, and rediscovers
-          candidates across your existing tools.
+          , an AI agent for recruiting. Finds and assesses candidates for
+          agencies and in-house teams, across their applicants, their own
+          database and the wider market.
         </LargeText>
         <LargeText>
           <PageLink href="https://www.intavia.ai" target="_blank">
@@ -39,12 +51,6 @@ const Home: CustomPage = ({
             AI Primer
           </PageLink>
           , the AI news firehose distilled daily.
-        </LargeText>
-        <LargeText>
-          <PageLink href="https://github.com/andreasasprou/polaris" target="_blank">
-            Polaris
-          </PageLink>
-          , open source Devin. Bring your own API keys.
         </LargeText>
       </VStack>
       <LargeText>
